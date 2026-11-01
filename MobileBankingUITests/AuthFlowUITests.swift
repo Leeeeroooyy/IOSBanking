@@ -1,0 +1,109 @@
+import XCTest
+
+final class AuthFlowUITests: XCTestCase {
+
+    private let fullName = "Jana Novakova"
+    private let email = "jana@example.cz"
+    private let password = "heslo123"
+
+    override func setUpWithError() throws {
+        continueAfterFailure = false
+    }
+
+    /// The result of stage 3: sign up, walk through all tabs, sign out and sign in again.
+    func testSignUpBrowseTabsSignOutAndSignIn() {
+        let app = launchApp()
+        signUp(in: app)
+
+        let userName = app.staticTexts["dashboard.userName"]
+        XCTAssertTrue(userName.waitForExistence(timeout: 10))
+        XCTAssertEqual(userName.label, fullName)
+        attachScreenshot(named: "dashboard")
+
+        let tabs = [
+            ("Platby", "Platby zatím nejsou k dispozici"),
+            ("Trhy", "Trhy zatím nejsou k dispozici"),
+            ("Zprávy", "Zprávy zatím nejsou k dispozici")
+        ]
+        for (tab, emptyTitle) in tabs {
+            waitAndTap(app.tabBars.buttons[tab])
+            // The empty state may merge its title and description into one element.
+            let title = app.descendants(matching: .any)
+                .matching(NSPredicate(format: "label CONTAINS %@", emptyTitle))
+                .firstMatch
+            XCTAssertTrue(title.waitForExistence(timeout: 5), "Tab \(tab)")
+        }
+
+        waitAndTap(app.tabBars.buttons["Profil"])
+        XCTAssertTrue(app.staticTexts[email].waitForExistence(timeout: 5))
+        attachScreenshot(named: "profile")
+
+        waitAndTap(app.buttons["profile.signOut"])
+        XCTAssertTrue(app.staticTexts["login.title"].waitForExistence(timeout: 5))
+
+        signIn(in: app, password: password)
+        XCTAssertTrue(app.staticTexts["dashboard.userName"].waitForExistence(timeout: 10))
+    }
+
+    func testWrongPasswordShowsError() {
+        let app = launchApp()
+        signUp(in: app)
+        XCTAssertTrue(app.staticTexts["dashboard.userName"].waitForExistence(timeout: 10))
+
+        waitAndTap(app.tabBars.buttons["Profil"])
+        waitAndTap(app.buttons["profile.signOut"])
+        XCTAssertTrue(app.staticTexts["login.title"].waitForExistence(timeout: 5))
+
+        signIn(in: app, password: "spatneheslo")
+
+        let error = app.staticTexts["login.error"]
+        XCTAssertTrue(error.waitForExistence(timeout: 10))
+        XCTAssertEqual(error.label, "Nesprávný e-mail nebo heslo")
+    }
+
+    func testEmptySignUpShowsInlineErrors() {
+        let app = launchApp()
+        openSignUp(in: app)
+
+        app.buttons["register.submit"].tap()
+
+        XCTAssertTrue(app.staticTexts["Zadejte jméno a příjmení"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Zadejte platný e-mail"].exists)
+        attachScreenshot(named: "sign-up-errors")
+    }
+
+    // MARK: Helpers
+
+    private func openSignUp(in app: XCUIApplication) {
+        let button = app.buttons["login.register"]
+        XCTAssertTrue(button.waitForExistence(timeout: 10))
+        button.tap()
+        XCTAssertTrue(app.staticTexts["register.title"].waitForExistence(timeout: 5))
+    }
+
+    /// Only the first field is tapped. Each field ends with a return key press: it moves the focus on,
+    /// and the last one submits. A tap could land on the keyboard, which would type an extra character.
+    private func signUp(in app: XCUIApplication) {
+        openSignUp(in: app)
+        type(fullName + "\n", into: app.textFields["register.fullName"], tapsField: true)
+        type(email + "\n", into: app.textFields["register.email"])
+        type(password + "\n", into: app.secureTextFields["register.password"])
+        type(password + "\n", into: app.secureTextFields["register.passwordConfirmation"])
+    }
+
+    private func signIn(in app: XCUIApplication, password: String) {
+        type(email + "\n", into: app.textFields["login.email"], tapsField: true)
+        type(password + "\n", into: app.secureTextFields["login.password"])
+    }
+
+    private func type(_ text: String, into field: XCUIElement, tapsField: Bool = false) {
+        XCTAssertTrue(field.waitForExistence(timeout: 5))
+        if tapsField { field.tap() }
+        field.typeText(text)
+    }
+
+    private func waitAndTap(_ element: XCUIElement) {
+        XCTAssertTrue(element.waitForExistence(timeout: 5))
+        element.tap()
+    }
+}

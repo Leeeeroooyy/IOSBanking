@@ -1,0 +1,24 @@
+{
+  "sourceLanguage": "cs",
+  "strings": {
+    "NSFaceIDUsageDescription": {
+      "comment": "Why the app asks for Face ID",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Face ID odemyká aplikaci Mobile Banking."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Face ID unlocks Mobile Banking."
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}
