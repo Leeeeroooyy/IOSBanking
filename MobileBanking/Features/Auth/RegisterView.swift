@@ -60,7 +60,7 @@ struct RegisterView: View {
                 AppTextField(
                     titleKey: "auth.field.password",
                     text: $viewModel.password,
-                    kind: .newPassword,
+                    kind: .password,
                     error: viewModel.passwordError?.messageKey,
                     identifier: "register.password"
                 )
@@ -71,7 +71,7 @@ struct RegisterView: View {
                 AppTextField(
                     titleKey: "auth.field.passwordConfirmation",
                     text: $viewModel.passwordConfirmation,
-                    kind: .newPassword,
+                    kind: .password,
                     error: viewModel.confirmationError?.messageKey,
                     identifier: "register.passwordConfirmation"
                 )

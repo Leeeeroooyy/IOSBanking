@@ -6,7 +6,6 @@ struct AppTextField: View {
         case name
         case email
         case password
-        case newPassword
     }
 
     let titleKey: LocalizedStringKey
@@ -58,11 +57,9 @@ struct AppTextField: View {
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
         case .password:
+            // Not `.newPassword`: a demo app must not offer to generate or save a real password.
             SecureField("", text: $text)
                 .textContentType(.password)
-        case .newPassword:
-            SecureField("", text: $text)
-                .textContentType(.newPassword)
         }
     }
 }

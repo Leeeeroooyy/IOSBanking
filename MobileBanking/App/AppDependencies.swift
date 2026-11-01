@@ -8,6 +8,7 @@ import SwiftData
 final class AppDependencies {
     /// UI tests pass this launch argument to start every run clean.
     static let uiTestingArgument = "-uiTesting"
+    static let uiTestingSignedInArgument = "-uiTestingSignedIn"
 
     let auth: any AuthService
     let biometrics: any BiometricService
@@ -28,7 +29,8 @@ final class AppDependencies {
             defaults.removeObject(forKey: AppLanguage.storageKey)
             defaults.removeObject(forKey: AppAppearance.storageKey)
             defaults.removeObject(forKey: BiometricSettings.storageKey)
-            return inMemory()
+            let startsSignedIn = ProcessInfo.processInfo.arguments.contains(uiTestingSignedInArgument)
+            return inMemory(signedIn: startsSignedIn)
         }
         #endif
 
@@ -43,16 +45,26 @@ final class AppDependencies {
     }
 
     /// Nothing survives the run. Used by previews and UI tests.
-    static func inMemory() -> AppDependencies {
-        AppDependencies(
-            auth: LocalAuthService(
-                container: makeContainer(inMemory: true),
-                keychain: InMemoryKeychainService(),
-                iterations: 1_000
-            ),
+    static func inMemory(signedIn: Bool = false) -> AppDependencies {
+        let container = makeContainer(inMemory: true)
+        let keychain = InMemoryKeychainService()
+        if signedIn {
+            addDemoSession(container: container, keychain: keychain)
+        }
+
+        return AppDependencies(
+            auth: LocalAuthService(container: container, keychain: keychain, iterations: 1_000),
             biometrics: LocalBiometricService(),
             biometricSettings: BiometricSettings()
         )
+    }
+
+    /// Lets UI tests reach the signed-in screens without going through the sign-up form.
+    private static func addDemoSession(container: ModelContainer, keychain: any KeychainService) {
+        let user = User(fullName: "Jana Novakova", email: "jana@example.cz")
+        container.mainContext.insert(user)
+        try? container.mainContext.save()
+        try? keychain.save(Data(user.id.uuidString.utf8), account: LocalAuthService.sessionAccount)
     }
 
     private static func makeContainer(inMemory: Bool) -> ModelContainer {

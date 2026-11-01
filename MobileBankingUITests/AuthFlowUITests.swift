@@ -15,9 +15,8 @@ final class AuthFlowUITests: XCTestCase {
         let app = launchApp()
         signUp(in: app)
 
-        let userName = app.staticTexts["dashboard.userName"]
-        XCTAssertTrue(userName.waitForExistence(timeout: 10))
-        XCTAssertEqual(userName.label, fullName)
+        assertDashboard(in: app)
+        XCTAssertEqual(app.staticTexts["dashboard.userName"].label, fullName)
         attachScreenshot(named: "dashboard")
 
         let tabs = [
@@ -48,7 +47,7 @@ final class AuthFlowUITests: XCTestCase {
     func testWrongPasswordShowsError() {
         let app = launchApp()
         signUp(in: app)
-        XCTAssertTrue(app.staticTexts["dashboard.userName"].waitForExistence(timeout: 10))
+        assertDashboard(in: app)
 
         waitAndTap(app.tabBars.buttons["Profil"])
         waitAndTap(app.buttons["profile.signOut"])
@@ -88,7 +87,35 @@ final class AuthFlowUITests: XCTestCase {
         type(fullName + "\n", into: app.textFields["register.fullName"], tapsField: true)
         type(email + "\n", into: app.textFields["register.email"])
         type(password + "\n", into: app.secureTextFields["register.password"])
-        type(password + "\n", into: app.secureTextFields["register.passwordConfirmation"])
+
+        let passwordField = app.secureTextFields["register.password"]
+        let confirmation = app.secureTextFields["register.passwordConfirmation"]
+        type(password, into: confirmation)
+        // Secure values arrive masked, so only their lengths say whether a field was cleared.
+        let lengths = [passwordField, confirmation].map { ($0.value as? String ?? "").count }
+        attachText("password lengths: \(lengths), expected 8 and 8", named: "secure-lengths")
+        attachScreenshot(named: "sign-up-before-submit")
+        confirmation.typeText("\n")
+    }
+
+    /// When the dashboard is missing, the failure message says what is on the screen instead.
+    private func assertDashboard(in app: XCUIApplication, file: StaticString = #filePath, line: UInt = #line) {
+        guard !app.staticTexts["dashboard.userName"].waitForExistence(timeout: 10) else { return }
+
+        attachScreenshot(named: "no-dashboard")
+        attachText(app.debugDescription, named: "no-dashboard-tree")
+
+        let inlineErrors = ["Heslo musí mít alespoň 8 znaků", "Hesla se neshodují"].filter { app.staticTexts[$0].exists }
+        let verdict: String
+        if app.staticTexts["register.title"].exists {
+            verdict = "Form still shown. Inline errors: \(inlineErrors), "
+                + "register.error: \(app.staticTexts["register.error"].exists), keyboards: \(app.keyboards.count)"
+        } else if app.descendants(matching: .any)["dashboard.userName"].exists {
+            verdict = "Dashboard shown, but the user name is not a StaticText"
+        } else {
+            verdict = "Neither the form nor the dashboard: see the no-dashboard screenshot"
+        }
+        XCTFail(verdict, file: file, line: line)
     }
 
     private func signIn(in app: XCUIApplication, password: String) {
@@ -100,10 +127,5 @@ final class AuthFlowUITests: XCTestCase {
         XCTAssertTrue(field.waitForExistence(timeout: 5))
         if tapsField { field.tap() }
         field.typeText(text)
-    }
-
-    private func waitAndTap(_ element: XCUIElement) {
-        XCTAssertTrue(element.waitForExistence(timeout: 5))
-        element.tap()
     }
 }
