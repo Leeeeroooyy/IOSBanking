@@ -1,14 +1,16 @@
 import Foundation
 import SwiftData
 
+/// Type of a bank account. Top-level on purpose: types nested inside a `@Model` class
+/// can confuse the compiler's handling of the macro-generated conformances.
+enum AccountKind: String, CaseIterable {
+    case current
+    case savings
+}
+
 /// A bank account in the demo bank.
 @Model
 final class Account {
-    enum Kind: String, CaseIterable {
-        case current
-        case savings
-    }
-
     @Attribute(.unique) var id: UUID
     /// The `User` who owns the account. `nil` means an account of another, imaginary
     /// client of the demo bank (a payment recipient in stage 5).
@@ -26,7 +28,7 @@ final class Account {
         id: UUID = UUID(),
         ownerID: UUID?,
         holderName: String,
-        kind: Kind,
+        kind: AccountKind,
         number: CzechAccountNumber,
         balance: Money,
         createdAt: Date = .now
@@ -41,8 +43,8 @@ final class Account {
         self.createdAt = createdAt
     }
 
-    var kind: Kind {
-        Kind(rawValue: kindRaw) ?? .current
+    var kind: AccountKind {
+        AccountKind(rawValue: kindRaw) ?? .current
     }
 
     var balance: Money {

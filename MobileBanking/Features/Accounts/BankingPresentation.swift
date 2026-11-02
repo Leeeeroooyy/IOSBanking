@@ -3,7 +3,7 @@ import SwiftUI
 // Texts and icons of the banking models. They live here, next to the screens,
 // so the models themselves stay free of SwiftUI.
 
-extension Account.Kind {
+extension AccountKind {
     var titleKey: LocalizedStringKey {
         switch self {
         case .current: return "account.kind.current"
@@ -19,7 +19,7 @@ extension Account.Kind {
     }
 }
 
-extension BankTransaction.Category {
+extension TransactionCategory {
     var titleKey: LocalizedStringKey {
         switch self {
         case .opening: return "category.opening"
@@ -49,7 +49,7 @@ extension BankTransaction.Category {
     }
 }
 
-extension BankTransaction.Direction {
+extension TransactionDirection {
     var titleKey: LocalizedStringKey {
         switch self {
         case .incoming: return "transaction.direction.incoming"
@@ -58,7 +58,7 @@ extension BankTransaction.Direction {
     }
 }
 
-extension BankTransaction.Status {
+extension TransactionStatus {
     var titleKey: LocalizedStringKey {
         switch self {
         case .completed: return "transaction.status.completed"

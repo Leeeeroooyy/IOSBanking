@@ -52,7 +52,7 @@ final class LocalBankingService: BankingService {
     }
 
     func demoRecipients() throws -> [Account] {
-        let current = Account.Kind.current.rawValue
+        let current = AccountKind.current.rawValue
         let descriptor = FetchDescriptor<Account>(
             predicate: #Predicate { $0.kindRaw == current },
             sortBy: [SortDescriptor(\.holderName)]
@@ -88,7 +88,7 @@ final class LocalBankingService: BankingService {
 
         let recipient = try account(number: targetNumber)
         let isOwnTransfer = recipient != nil && recipient?.ownerID == source.ownerID
-        let category: BankTransaction.Category = isOwnTransfer ? .transfer : .other
+        let category: TransactionCategory = isOwnTransfer ? .transfer : .other
         let date = now()
         let name = request.recipientName.isEmpty ? (recipient?.holderName ?? targetNumber) : request.recipientName
 
@@ -136,7 +136,7 @@ final class LocalBankingService: BankingService {
     }
 
     private func existingOutgoing(transferID: UUID) throws -> BankTransaction? {
-        let outgoing = BankTransaction.Direction.outgoing.rawValue
+        let outgoing = TransactionDirection.outgoing.rawValue
         var descriptor = FetchDescriptor<BankTransaction>(
             predicate: #Predicate { $0.transferID == transferID && $0.directionRaw == outgoing }
         )

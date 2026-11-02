@@ -1,34 +1,35 @@
 import Foundation
 import SwiftData
 
+// Types of a transaction. Top-level on purpose (see AccountKind).
+enum TransactionDirection: String {
+    case incoming
+    case outgoing
+}
+
+enum TransactionStatus: String {
+    case completed
+    case failed
+}
+
+enum TransactionCategory: String, CaseIterable {
+    case opening
+    case salary
+    case rent
+    case groceries
+    case utilities
+    case restaurant
+    case transfer
+    case interest
+    case other
+}
+
 /// One movement on one account. Named `BankTransaction` so it does not clash with SwiftUI's `Transaction`.
 ///
 /// A payment between two accounts of the demo bank creates two records, one per account,
 /// with the same `transferID`.
 @Model
 final class BankTransaction {
-    enum Direction: String {
-        case incoming
-        case outgoing
-    }
-
-    enum Status: String {
-        case completed
-        case failed
-    }
-
-    enum Category: String, CaseIterable {
-        case opening
-        case salary
-        case rent
-        case groceries
-        case utilities
-        case restaurant
-        case transfer
-        case interest
-        case other
-    }
-
     @Attribute(.unique) var id: UUID
     var transferID: UUID
     var accountID: UUID
@@ -52,7 +53,7 @@ final class BankTransaction {
         id: UUID = UUID(),
         transferID: UUID = UUID(),
         accountID: UUID,
-        direction: Direction,
+        direction: TransactionDirection,
         amount: Money,
         counterpartyName: String,
         counterpartyAccount: String? = nil,
@@ -61,8 +62,8 @@ final class BankTransaction {
         specificSymbol: String? = nil,
         message: String? = nil,
         date: Date,
-        status: Status = .completed,
-        category: Category,
+        status: TransactionStatus = .completed,
+        category: TransactionCategory,
         isExternal: Bool = false
     ) {
         self.id = id
@@ -83,9 +84,9 @@ final class BankTransaction {
         self.isExternal = isExternal
     }
 
-    var direction: Direction { Direction(rawValue: directionRaw) ?? .outgoing }
-    var status: Status { Status(rawValue: statusRaw) ?? .completed }
-    var category: Category { Category(rawValue: categoryRaw) ?? .other }
+    var direction: TransactionDirection { TransactionDirection(rawValue: directionRaw) ?? .outgoing }
+    var status: TransactionStatus { TransactionStatus(rawValue: statusRaw) ?? .completed }
+    var category: TransactionCategory { TransactionCategory(rawValue: categoryRaw) ?? .other }
 
     var amount: Money {
         Money(minorUnits: amountMinorUnits, currencyCode: currencyCode)
