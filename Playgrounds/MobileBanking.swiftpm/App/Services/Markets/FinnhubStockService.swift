@@ -135,9 +135,9 @@ final class SwitchingStockService: StockService {
     private let demo: DemoStockService
     private let client: APIClient
 
-    init(keyStore: StockAPIKeyStore, demo: DemoStockService = DemoStockService(), client: APIClient = APIClient()) {
+    init(keyStore: StockAPIKeyStore, demo: DemoStockService? = nil, client: APIClient = APIClient()) {
         self.keyStore = keyStore
-        self.demo = demo
+        self.demo = demo ?? DemoStockService()
         self.client = client
     }
 
