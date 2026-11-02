@@ -141,7 +141,7 @@ struct TransferFormView: View {
             Text("transfer.field.from")
                 .font(Theme.Typography.label)
                 .foregroundStyle(Theme.Colors.textSecondary)
-            ForEach(model.accounts) { account in
+            ForEach(model.accounts, id: \.id) { account in
                 Button {
                     model.fromAccountID = account.id
                 } label: {
@@ -170,7 +170,7 @@ struct TransferFormView: View {
                 .foregroundStyle(Theme.Colors.textSecondary)
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: Theme.Spacing.s) {
-                    ForEach(model.suggestedRecipients) { account in
+                    ForEach(model.suggestedRecipients, id: \.id) { account in
                         Button {
                             model.fill(recipient: account)
                         } label: {
