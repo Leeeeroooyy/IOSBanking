@@ -1,0 +1,42 @@
+name: Swift Playgrounds copy
+
+# Checks that Playgrounds/MobileBanking.swiftpm matches the app code and that it builds.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  playground:
+    runs-on: macos-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: The copy is up to date
+        run: |
+          python3 scripts/make_playground.py
+          if [ -n "$(git status --porcelain Playgrounds)" ]; then
+            git status --porcelain Playgrounds
+            echo "Playgrounds/ is out of date: run python3 scripts/make_playground.py and commit."
+            exit 1
+          fi
+
+      - name: Build the app package
+        working-directory: Playgrounds/MobileBanking.swiftpm
+        run: |
+          xcodebuild build \
+            -scheme MobileBanking \
+            -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath "$RUNNER_TEMP/dd" \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: Resources are in the app
+        run: |
+          APP=$(find "$RUNNER_TEMP/dd/Build/Products" -name "MobileBanking.app" -maxdepth 2 | head -1)
+          echo "App: $APP"
+          find "$APP" -maxdepth 3 \( -name "*.lproj" -o -name "Assets.car" -o -name "*.bundle" -o -name "Localizable*" \) | sed "s|$APP/||"
+          /usr/libexec/PlistBuddy -c "Print :NSFaceIDUsageDescription" "$APP/Info.plist"
