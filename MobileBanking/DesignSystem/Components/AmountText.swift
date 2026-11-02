@@ -14,6 +14,8 @@ struct AmountText: View {
     var currencyCode: String = "CZK"
     var kind: Kind = .plain
     var font: Font = Theme.Typography.amount
+    /// Overrides the default color, e.g. white text on the brand header.
+    var color: Color? = nil
 
     @Environment(\.locale) private var locale
 
@@ -21,7 +23,7 @@ struct AmountText: View {
         Text(formatted)
             .font(font)
             .monospacedDigit()          // digits keep the same width, amounts do not "jump"
-            .foregroundStyle(color)
+            .foregroundStyle(resolvedColor)
             .lineLimit(1)
             .minimumScaleFactor(0.6)    // very large amounts shrink instead of being cut off
     }
@@ -35,8 +37,9 @@ struct AmountText: View {
         }
     }
 
-    private var color: Color {
-        kind == .signed && amount > 0 ? Theme.Colors.positive : Theme.Colors.textPrimary
+    private var resolvedColor: Color {
+        if let color { return color }
+        return kind == .signed && amount > 0 ? Theme.Colors.positive : Theme.Colors.textPrimary
     }
 }
 
