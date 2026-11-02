@@ -1,0 +1,509 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		2D119A0D1CB486984C3D84BE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46F86FAA6BBF9AC94A7E4595 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2A57DC1D883FD21FB995169;
+			remoteInfo = MobileBanking;
+		};
+		BE1F750CE6C0273DEAC92DFF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46F86FAA6BBF9AC94A7E4595 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2A57DC1D883FD21FB995169;
+			remoteInfo = MobileBanking;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		81918909E83595C8F4212CCC /* MobileBanking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileBanking.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6E5521E73C6C6B1C0BC59B8 /* MobileBankingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MobileBankingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FE318CAEC410BF655BDF08E /* MobileBankingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MobileBankingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		8A505F5876859C98AABDA569 /* Exceptions for "MobileBanking" folder in "MobileBanking" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = D2A57DC1D883FD21FB995169 /* MobileBanking */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		CE882751F8B3EE4485706ED4 /* MobileBanking */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				8A505F5876859C98AABDA569 /* Exceptions for "MobileBanking" folder in "MobileBanking" target */,
+			);
+			path = MobileBanking;
+			sourceTree = "<group>";
+		};
+		4609E30652CE5A2E104606CC /* MobileBankingTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = MobileBankingTests;
+			sourceTree = "<group>";
+		};
+		E7CED7055384AC2F8AF582FC /* MobileBankingUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = MobileBankingUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0248D6DB510EB0F7E9C05175 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5408B3051C10D8BBFEDEAAAC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9D1756C68919C7F80C856227 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8D3FC6DB5D0827F168A73277 = {
+			isa = PBXGroup;
+			children = (
+				CE882751F8B3EE4485706ED4 /* MobileBanking */,
+				4609E30652CE5A2E104606CC /* MobileBankingTests */,
+				E7CED7055384AC2F8AF582FC /* MobileBankingUITests */,
+				1BADDC1D73C1A20F347483E1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1BADDC1D73C1A20F347483E1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				81918909E83595C8F4212CCC /* MobileBanking.app */,
+				D6E5521E73C6C6B1C0BC59B8 /* MobileBankingTests.xctest */,
+				5FE318CAEC410BF655BDF08E /* MobileBankingUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D2A57DC1D883FD21FB995169 /* MobileBanking */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 034C6249A62A205DDC9055EB /* Build configuration list for PBXNativeTarget "MobileBanking" */;
+			buildPhases = (
+				DA10D9DD089DF2AFEBC5ED5A /* Sources */,
+				0248D6DB510EB0F7E9C05175 /* Frameworks */,
+				82A968CB662751220D4DFE2D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				CE882751F8B3EE4485706ED4 /* MobileBanking */,
+			);
+			name = MobileBanking;
+			packageProductDependencies = (
+			);
+			productName = MobileBanking;
+			productReference = 81918909E83595C8F4212CCC /* MobileBanking.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3E34BDEBD9BD5EDDA27E8728 /* MobileBankingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D6BBB08F22516A5C5399C1FA /* Build configuration list for PBXNativeTarget "MobileBankingTests" */;
+			buildPhases = (
+				8B41B30075CDA374EDFAA841 /* Sources */,
+				5408B3051C10D8BBFEDEAAAC /* Frameworks */,
+				689A0080D91AE877251E8628 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1B749687AD1CDFE5DBA85A05 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				4609E30652CE5A2E104606CC /* MobileBankingTests */,
+			);
+			name = MobileBankingTests;
+			packageProductDependencies = (
+			);
+			productName = MobileBankingTests;
+			productReference = D6E5521E73C6C6B1C0BC59B8 /* MobileBankingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7D5C009E4EB8BBC78647CAEC /* MobileBankingUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8CC368B3A7F99DB588378007 /* Build configuration list for PBXNativeTarget "MobileBankingUITests" */;
+			buildPhases = (
+				491473A2D7C935869666DA0E /* Sources */,
+				9D1756C68919C7F80C856227 /* Frameworks */,
+				5F5390436FBBAD5171D3FC74 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B53B0AFED14EE80BC86577B5 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				E7CED7055384AC2F8AF582FC /* MobileBankingUITests */,
+			);
+			name = MobileBankingUITests;
+			packageProductDependencies = (
+			);
+			productName = MobileBankingUITests;
+			productReference = 5FE318CAEC410BF655BDF08E /* MobileBankingUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		46F86FAA6BBF9AC94A7E4595 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					D2A57DC1D883FD21FB995169 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					3E34BDEBD9BD5EDDA27E8728 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = D2A57DC1D883FD21FB995169;
+					};
+					7D5C009E4EB8BBC78647CAEC = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = D2A57DC1D883FD21FB995169;
+					};
+				};
+			};
+			buildConfigurationList = E3A7C415CD449FA8A1E633E1 /* Build configuration list for PBXProject "MobileBanking" */;
+			developmentRegion = cs;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				cs,
+				en,
+				Base,
+			);
+			mainGroup = 8D3FC6DB5D0827F168A73277;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 1BADDC1D73C1A20F347483E1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D2A57DC1D883FD21FB995169 /* MobileBanking */,
+				3E34BDEBD9BD5EDDA27E8728 /* MobileBankingTests */,
+				7D5C009E4EB8BBC78647CAEC /* MobileBankingUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		82A968CB662751220D4DFE2D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		689A0080D91AE877251E8628 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F5390436FBBAD5171D3FC74 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DA10D9DD089DF2AFEBC5ED5A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B41B30075CDA374EDFAA841 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		491473A2D7C935869666DA0E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1B749687AD1CDFE5DBA85A05 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2A57DC1D883FD21FB995169 /* MobileBanking */;
+			targetProxy = 2D119A0D1CB486984C3D84BE /* PBXContainerItemProxy */;
+		};
+		B53B0AFED14EE80BC86577B5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2A57DC1D883FD21FB995169 /* MobileBanking */;
+			targetProxy = BE1F750CE6C0273DEAC92DFF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		FA9139DD8B03E3F922556BF8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		FFE2104CCFAB79205AC64460 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		72FB3ED29B4639D83EC5DB14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AppPrimary;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Mobile Banking";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Face ID odemyká aplikaci Mobile Banking.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = cz.mobiletech.MobileBanking;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		191734982F22ABEBB64A1AE0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AppPrimary;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Mobile Banking";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Face ID odemyká aplikaci Mobile Banking.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = cz.mobiletech.MobileBanking;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		DF0EF2161623C301A3DE2572 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = cz.mobiletech.MobileBankingTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MobileBanking.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MobileBanking";
+			};
+			name = Debug;
+		};
+		E24425A5DD85A3CD622D3612 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = cz.mobiletech.MobileBankingTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MobileBanking.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MobileBanking";
+			};
+			name = Release;
+		};
+		B80F150CE879B8684BAF4B51 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = cz.mobiletech.MobileBankingUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = MobileBanking;
+			};
+			name = Debug;
+		};
+		8918E05DD326D21CE5E3E50E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = cz.mobiletech.MobileBankingUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = MobileBanking;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E3A7C415CD449FA8A1E633E1 /* Build configuration list for PBXProject "MobileBanking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA9139DD8B03E3F922556BF8 /* Debug */,
+				FFE2104CCFAB79205AC64460 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		034C6249A62A205DDC9055EB /* Build configuration list for PBXNativeTarget "MobileBanking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72FB3ED29B4639D83EC5DB14 /* Debug */,
+				191734982F22ABEBB64A1AE0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D6BBB08F22516A5C5399C1FA /* Build configuration list for PBXNativeTarget "MobileBankingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF0EF2161623C301A3DE2572 /* Debug */,
+				E24425A5DD85A3CD622D3612 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8CC368B3A7F99DB588378007 /* Build configuration list for PBXNativeTarget "MobileBankingUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B80F150CE879B8684BAF4B51 /* Debug */,
+				8918E05DD326D21CE5E3E50E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 46F86FAA6BBF9AC94A7E4595 /* Project object */;
+}
