@@ -10,7 +10,7 @@ struct AccountRow: View {
                 .font(.body.weight(.bold))
                 .foregroundStyle(Theme.Colors.onBrand)
                 .frame(width: 40, height: 40)
-                .background(BrandGradient(), in: RoundedRectangle(cornerRadius: Theme.Radius.s, style: .continuous))
+                .background(BrandGradient().clipShape(RoundedRectangle(cornerRadius: Theme.Radius.s, style: .continuous)))
                 .accessibilityHidden(true)
 
             VStack(alignment: .leading, spacing: 2) {
