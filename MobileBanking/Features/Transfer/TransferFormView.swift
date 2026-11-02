@@ -152,9 +152,14 @@ struct TransferFormView: View {
                         )
                 }
                 .buttonStyle(.plain)
-                .accessibilityAddTraits(model.fromAccountID == account.id ? .isSelected : [])
+                .accessibilityAddTraits(selectionTraits(for: account))
             }
         }
+    }
+
+    /// VoiceOver says "selected" for the chosen source account.
+    private func selectionTraits(for account: Account) -> AccessibilityTraits {
+        model.fromAccountID == account.id ? .isSelected : []
     }
 
     /// One tap fills in an own account or another client of the demo bank.
