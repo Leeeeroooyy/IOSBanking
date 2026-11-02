@@ -109,6 +109,150 @@
         }
       }
     },
+    "accountData.clientNumber": {
+      "comment": "Row label",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Číslo klienta"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Client number"
+          }
+        }
+      }
+    },
+    "accountData.currency": {
+      "comment": "Row label",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Měna"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Currency"
+          }
+        }
+      }
+    },
+    "accountData.demoNote": {
+      "comment": "Note at the bottom",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Údaje demo banky studijního projektu. Čísla účtů a IBAN jsou platné jen uvnitř aplikace."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Data of the demo bank of a study project. Account numbers and IBANs are valid only inside the app."
+          }
+        }
+      }
+    },
+    "accountData.holder": {
+      "comment": "Row label",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Majitel účtu"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Account holder"
+          }
+        }
+      }
+    },
+    "accountData.iban": {
+      "comment": "Row label",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "IBAN"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "IBAN"
+          }
+        }
+      }
+    },
+    "accountData.memberSince": {
+      "comment": "Row label",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Klientem od"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Client since"
+          }
+        }
+      }
+    },
+    "accountData.opened": {
+      "comment": "Row label",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Založen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opened"
+          }
+        }
+      }
+    },
+    "accountData.personal": {
+      "comment": "Section title",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Osobní údaje"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Personal details"
+          }
+        }
+      }
+    },
     "app.name": {
       "comment": "App name in the header",
       "extractionState": "manual",
@@ -1185,6 +1329,24 @@
           "stringUnit": {
             "state": "translated",
             "value": "A study prototype for the Mobile Technologies course. It is not a real bank."
+          }
+        }
+      }
+    },
+    "profile.data": {
+      "comment": "Profile row and screen title",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Moje údaje"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "My details"
           }
         }
       }

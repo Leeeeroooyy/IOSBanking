@@ -28,6 +28,13 @@ struct ProfileView: View {
 
             Section {
                 NavigationLink {
+                    AccountDataView(user: user, banking: dependencies.banking)
+                } label: {
+                    Label("profile.data", systemImage: "person.text.rectangle")
+                }
+                .accessibilityIdentifier("profile.data")
+
+                NavigationLink {
                     SettingsView(biometrics: dependencies.biometrics, settings: dependencies.biometricSettings)
                 } label: {
                     Label("settings.title", systemImage: "gearshape")

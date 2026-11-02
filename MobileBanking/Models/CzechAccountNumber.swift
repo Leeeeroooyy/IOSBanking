@@ -62,6 +62,22 @@ struct CzechAccountNumber: Hashable {
         prefix.isEmpty ? "\(number)/\(bankCode)" : "\(prefix)-\(number)/\(bankCode)"
     }
 
+    /// International form for payments from abroad: `CZ65 0800 0000 1920 0014 5399`.
+    /// Country code CZ, two check digits (ISO 13616, mod 97), bank code, prefix (6) and number (10).
+    var iban: String {
+        let bban = bankCode + String(repeating: "0", count: 6 - prefix.count) + prefix
+            + String(repeating: "0", count: 10 - number.count) + number
+        // Letters become numbers (C = 12, Z = 35) and "CZ00" moves to the end.
+        let remainder = (bban + "123500").reduce(0) { ($0 * 10 + ($1.wholeNumberValue ?? 0)) % 97 }
+        let check = 98 - remainder
+        let iban = "CZ" + (check < 10 ? "0" : "") + String(check) + bban
+        return stride(from: 0, to: iban.count, by: 4).map { offset in
+            let start = iban.index(iban.startIndex, offsetBy: offset)
+            let end = iban.index(start, offsetBy: 4, limitedBy: iban.endIndex) ?? iban.endIndex
+            return String(iban[start..<end])
+        }.joined(separator: " ")
+    }
+
     /// The last four digits, as shown in lists: `•• 5399`.
     var masked: String {
         "•• " + String(number.suffix(4))
