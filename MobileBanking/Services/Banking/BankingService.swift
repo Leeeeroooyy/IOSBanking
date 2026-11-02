@@ -16,4 +16,9 @@ protocol BankingService {
     func accounts(ownerID: UUID) throws -> [Account]
     /// Transactions of the given accounts, newest first.
     func transactions(accountIDs: [UUID], limit: Int?) throws -> [BankTransaction]
+    /// Accounts of other (imaginary) clients of the demo bank, offered as payment recipients.
+    func demoRecipients() throws -> [Account]
+    /// Moves the money: one save for the debit, the credit and both records, or nothing at all.
+    /// Running the same request again returns the first result and moves nothing.
+    func executeTransfer(_ request: TransferRequest) throws -> TransferReceipt
 }

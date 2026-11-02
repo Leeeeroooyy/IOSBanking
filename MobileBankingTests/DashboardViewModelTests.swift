@@ -72,4 +72,6 @@ private final class FailingBankingService: BankingService {
     func prepareDemoAccounts(for user: User) throws { throw BankingError.storageFailed }
     func accounts(ownerID: UUID) throws -> [Account] { throw BankingError.storageFailed }
     func transactions(accountIDs: [UUID], limit: Int?) throws -> [BankTransaction] { throw BankingError.storageFailed }
+    func demoRecipients() throws -> [Account] { throw BankingError.storageFailed }
+    func executeTransfer(_ request: TransferRequest) throws -> TransferReceipt { throw TransferError.storageFailed }
 }

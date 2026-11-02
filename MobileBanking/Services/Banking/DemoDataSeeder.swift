@@ -107,6 +107,17 @@ enum DemoDataSeeder {
         return Seed(accounts: [current, savings], transactions: currentHistory + savingsHistory)
     }
 
+    /// Other clients of the demo bank. Payments to them really arrive on their accounts.
+    static func makeRecipients(now: Date = .now) -> [Account] {
+        [
+            ("Jana Nováková", Money(minorUnits: 2_480_000)),
+            ("Petr Svoboda", Money(minorUnits: 1_315_050)),
+            ("Eva Dvořáková", Money(minorUnits: 7_600_000)),
+        ].map { name, balance in
+            Account(ownerID: nil, holderName: name, kind: .current, number: .generate(), balance: balance, createdAt: now)
+        }
+    }
+
     /// The deposit that makes "balance = sum of all transactions" true from the first day.
     private static func openingDeposit(for account: Account, history: [BankTransaction], date: Date) -> BankTransaction {
         let net = history.reduce(Int64(0)) { $0 + $1.signedMinorUnits }

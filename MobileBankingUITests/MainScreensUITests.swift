@@ -84,7 +84,7 @@ final class MainScreensUITests: XCTestCase {
 
         waitAndTap(app.buttons["dashboard.action.send"])
         let title = app.descendants(matching: .any)
-            .matching(NSPredicate(format: "label CONTAINS %@", "Platby zatím nejsou k dispozici"))
+            .matching(NSPredicate(format: "label CONTAINS %@", "Nová platba"))
             .firstMatch
         XCTAssertTrue(title.waitForExistence(timeout: 5))
     }
@@ -92,7 +92,7 @@ final class MainScreensUITests: XCTestCase {
     func testCzechTabsShowTheirEmptyStates() {
         let app = launchApp(signedIn: true)
 
-        assertTab("Platby", showsTitle: "Platby zatím nejsou k dispozici", in: app)
+        assertTab("Platby", showsTitle: "Nová platba", in: app)
         assertTab("Trhy", showsTitle: "Trhy zatím nejsou k dispozici", in: app)
         assertTab("Zprávy", showsTitle: "Zprávy zatím nejsou k dispozici", in: app)
     }
@@ -101,7 +101,7 @@ final class MainScreensUITests: XCTestCase {
     func testEnglishTabs() {
         let app = launchApp(language: "en", signedIn: true)
 
-        assertTab("Payments", showsTitle: "Payments are not available yet", in: app)
+        assertTab("Payments", showsTitle: "New payment", in: app)
         assertTab("Markets", showsTitle: "Markets are not available yet", in: app)
         assertTab("News", showsTitle: "News is not available yet", in: app)
     }

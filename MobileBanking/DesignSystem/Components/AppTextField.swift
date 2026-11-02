@@ -6,6 +6,14 @@ struct AppTextField: View {
         case name
         case email
         case password
+        /// Free text (payment message).
+        case text
+        /// Czech account number: digits, "-" and "/".
+        case accountNumber
+        /// Money amount with a decimal separator.
+        case amount
+        /// Digits only (variable, constant and specific symbol).
+        case digits
     }
 
     let titleKey: LocalizedStringKey
@@ -56,6 +64,22 @@ struct AppTextField: View {
                 .keyboardType(.emailAddress)
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
+        case .text:
+            TextField("", text: $text)
+        case .accountNumber:
+            TextField("", text: $text)
+                .keyboardType(.numbersAndPunctuation)
+                .textInputAutocapitalization(.never)
+                .autocorrectionDisabled()
+                .monospacedDigit()
+        case .amount:
+            TextField("", text: $text)
+                .keyboardType(.decimalPad)
+                .monospacedDigit()
+        case .digits:
+            TextField("", text: $text)
+                .keyboardType(.numberPad)
+                .monospacedDigit()
         case .password:
             if Self.usesPlainPasswordFields {
                 TextField("", text: $text)

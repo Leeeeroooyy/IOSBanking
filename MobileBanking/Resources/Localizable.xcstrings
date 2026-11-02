@@ -1890,6 +1890,690 @@
           }
         }
       }
+    },
+    "transfer.confirm.amount": {
+      "comment": "Label above the amount",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odesíláte"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You are sending"
+          }
+        }
+      }
+    },
+    "transfer.confirm.balanceAfter": {
+      "comment": "Summary row",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zůstatek po platbě"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Balance after payment"
+          }
+        }
+      }
+    },
+    "transfer.confirm.demoNote": {
+      "comment": "Note on the confirmation screen",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ukázková platba studijního projektu. Žádné skutečné peníze se neposílají."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A demo payment of a study project. No real money is sent."
+          }
+        }
+      }
+    },
+    "transfer.confirm.edit": {
+      "comment": "Back to the form",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Upravit"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit"
+          }
+        }
+      }
+    },
+    "transfer.confirm.send": {
+      "comment": "Executes the payment",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Potvrdit platbu"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Confirm payment"
+          }
+        }
+      }
+    },
+    "transfer.confirm.title": {
+      "comment": "Confirmation screen title",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kontrola platby"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check payment"
+          }
+        }
+      }
+    },
+    "transfer.continue": {
+      "comment": "Opens the confirmation",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pokračovat"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continue"
+          }
+        }
+      }
+    },
+    "transfer.error.accountNumber": {
+      "comment": "Validation error",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neplatné číslo účtu. Zadejte ho ve tvaru 123456789/0800."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid account number. Use the format 123456789/0800."
+          }
+        }
+      }
+    },
+    "transfer.error.amount": {
+      "comment": "Validation error",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zadejte kladnou částku, např. 250 nebo 250,50."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter a positive amount, e.g. 250 or 250.50."
+          }
+        }
+      }
+    },
+    "transfer.error.amountTooLarge": {
+      "comment": "Validation error",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Částka je příliš vysoká."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The amount is too large."
+          }
+        }
+      }
+    },
+    "transfer.error.decimals": {
+      "comment": "Validation error",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Částka může mít nejvýše 2 desetinná místa."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The amount can have at most 2 decimal places."
+          }
+        }
+      }
+    },
+    "transfer.error.digits %lld": {
+      "comment": "Validation error with the maximum length",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pouze číslice, nejvýše %lld."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Digits only, at most %lld."
+          }
+        }
+      }
+    },
+    "transfer.error.insufficientFunds": {
+      "comment": "Validation error",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nedostatek prostředků na účtu."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Insufficient funds."
+          }
+        }
+      }
+    },
+    "transfer.error.required": {
+      "comment": "Validation error",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vyplňte toto pole."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fill in this field."
+          }
+        }
+      }
+    },
+    "transfer.error.sameAccount": {
+      "comment": "Validation error",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nelze poslat peníze na stejný účet."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You cannot send money to the same account."
+          }
+        }
+      }
+    },
+    "transfer.error.tooLong %lld": {
+      "comment": "Validation error with the maximum length",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nejvýše %lld znaků."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "At most %lld characters."
+          }
+        }
+      }
+    },
+    "transfer.failure.sourceMissing": {
+      "comment": "Failure reason",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Účet, ze kterého platíte, už neexistuje."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The account you are paying from no longer exists."
+          }
+        }
+      }
+    },
+    "transfer.failure.storage": {
+      "comment": "Failure reason",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Platbu se nepodařilo uložit. Nic se nezměnilo, zkuste to znovu."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The payment could not be saved. Nothing changed, please try again."
+          }
+        }
+      }
+    },
+    "transfer.field.amount": {
+      "comment": "Field label",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Částka v Kč"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Amount in CZK"
+          }
+        }
+      }
+    },
+    "transfer.field.constantSymbol": {
+      "comment": "Field label",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konstantní symbol"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Constant symbol"
+          }
+        }
+      }
+    },
+    "transfer.field.from": {
+      "comment": "Field label",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Z účtu"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "From account"
+          }
+        }
+      }
+    },
+    "transfer.field.message": {
+      "comment": "Field label",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zpráva pro příjemce"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Message for recipient"
+          }
+        }
+      }
+    },
+    "transfer.field.recipientAccount": {
+      "comment": "Field label",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Číslo účtu příjemce"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recipient account number"
+          }
+        }
+      }
+    },
+    "transfer.field.recipientName": {
+      "comment": "Field label",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jméno příjemce (nepovinné)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recipient name (optional)"
+          }
+        }
+      }
+    },
+    "transfer.field.specificSymbol": {
+      "comment": "Field label",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Specifický symbol"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Specific symbol"
+          }
+        }
+      }
+    },
+    "transfer.field.variableSymbol": {
+      "comment": "Field label",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Variabilní symbol"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Variable symbol"
+          }
+        }
+      }
+    },
+    "transfer.keyboard.done": {
+      "comment": "Hides the keyboard",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hotovo"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Done"
+          }
+        }
+      }
+    },
+    "transfer.moreSymbols": {
+      "comment": "Expands constant and specific symbol",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Další symboly"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "More symbols"
+          }
+        }
+      }
+    },
+    "transfer.result.done": {
+      "comment": "Finishes the payment flow",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hotovo"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Done"
+          }
+        }
+      }
+    },
+    "transfer.result.edit": {
+      "comment": "Back to the form after a failure",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Upravit platbu"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit payment"
+          }
+        }
+      }
+    },
+    "transfer.result.external": {
+      "comment": "Result note",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Příjemce není v demo bance: platba je jen simulovaná, peníze pouze odešly z vašeho účtu."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The recipient is not in the demo bank: the payment is only simulated, the money just left your account."
+          }
+        }
+      }
+    },
+    "transfer.result.failure": {
+      "comment": "Result title",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Platba neproběhla"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Payment failed"
+          }
+        }
+      }
+    },
+    "transfer.result.internal": {
+      "comment": "Result note",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Peníze jsou na účtu příjemce v demo bance."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The money is on the recipient's account in the demo bank."
+          }
+        }
+      }
+    },
+    "transfer.result.newBalance": {
+      "comment": "Label",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nový zůstatek"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New balance"
+          }
+        }
+      }
+    },
+    "transfer.result.success": {
+      "comment": "Result title",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Platba odeslána"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Payment sent"
+          }
+        }
+      }
+    },
+    "transfer.subtitle": {
+      "comment": "Payment form subtitle",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Převod mezi účty demo banky"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transfer between demo bank accounts"
+          }
+        }
+      }
+    },
+    "transfer.suggestions": {
+      "comment": "Label above recipient shortcuts",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rychlá volba příjemce"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quick recipient"
+          }
+        }
+      }
+    },
+    "transfer.title": {
+      "comment": "Payment form title",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nová platba"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New payment"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

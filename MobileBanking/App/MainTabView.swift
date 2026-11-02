@@ -26,8 +26,7 @@ struct MainTabView: View {
             .tag(MainTab.dashboard)
 
             NavigationStack {
-                ComingSoonView(titleKey: "placeholder.payments.title", systemImage: "arrow.left.arrow.right")
-                    .navigationTitle("tab.payments")
+                TransferFormView(user: user, banking: dependencies.banking)
             }
             .tabItem { Label("tab.payments", systemImage: "arrow.left.arrow.right") }
             .tag(MainTab.payments)

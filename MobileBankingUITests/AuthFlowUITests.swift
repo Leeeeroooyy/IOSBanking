@@ -20,7 +20,7 @@ final class AuthFlowUITests: XCTestCase {
         attachScreenshot(named: "dashboard")
 
         let tabs = [
-            ("Platby", "Platby zatím nejsou k dispozici"),
+            ("Platby", "Nová platba"),
             ("Trhy", "Trhy zatím nejsou k dispozici"),
             ("Zprávy", "Zprávy zatím nejsou k dispozici")
         ]
