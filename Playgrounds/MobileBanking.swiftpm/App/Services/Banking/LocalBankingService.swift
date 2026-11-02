@@ -16,24 +16,35 @@ final class LocalBankingService: BankingService {
     }
 
     func prepareDemoAccounts(for user: User) throws {
-        let needsRecipients = try demoRecipients().isEmpty
-        let needsAccounts = try accounts(ownerID: user.id).isEmpty
-        guard needsRecipients || needsAccounts else { return }
+        guard try accounts(ownerID: user.id).isEmpty else { return }
 
-        if needsRecipients {
-            for account in DemoDataSeeder.makeRecipients(now: now()) { context.insert(account) }
-        }
-        if needsAccounts {
-            let seed = DemoDataSeeder.makeSeed(for: user, now: now())
-            for account in seed.accounts { context.insert(account) }
-            for transaction in seed.transactions { context.insert(transaction) }
-        }
+        // Only the built-in test profiles start with money.
+        let seed = DemoDataSeeder.makeSeed(for: user, funded: TestAccounts.emails.contains(user.email), now: now())
+        for account in seed.accounts { context.insert(account) }
+        for transaction in seed.transactions { context.insert(transaction) }
         do {
             try context.save()
         } catch {
             // Never leave half of the demo data behind.
             context.rollback()
             throw BankingError.storageFailed
+        }
+    }
+
+    /// Version of the demo data. Raising it clears old accounts and transactions once
+    /// (e.g. after the invented history was removed); users and passwords stay.
+    static let demoDataVersion = 2
+    static let demoDataVersionKey = "demoDataVersion"
+
+    func resetDemoDataIfNeeded(defaults: UserDefaults = .standard) {
+        guard defaults.integer(forKey: Self.demoDataVersionKey) < Self.demoDataVersion else { return }
+        do {
+            try context.delete(model: BankTransaction.self)
+            try context.delete(model: Account.self)
+            try context.save()
+            defaults.set(Self.demoDataVersion, forKey: Self.demoDataVersionKey)
+        } catch {
+            context.rollback()
         }
     }
 
@@ -52,18 +63,18 @@ final class LocalBankingService: BankingService {
     }
 
     func demoRecipients() throws -> [Account] {
-        let current = AccountKind.current.rawValue
-        let descriptor = FetchDescriptor<Account>(
-            predicate: #Predicate { $0.kindRaw == current },
-            sortBy: [SortDescriptor(\.holderName)]
-        )
         do {
-            // Other clients of the demo bank (no owner) and the current accounts of the test profiles.
+            // The current accounts of the test profiles: payments to them really arrive.
             let testUserIDs = Set(try context.fetch(FetchDescriptor<User>())
                 .filter { TestAccounts.emails.contains($0.email) }
                 .map(\.id))
+            let current = AccountKind.current.rawValue
+            let descriptor = FetchDescriptor<Account>(
+                predicate: #Predicate { $0.kindRaw == current },
+                sortBy: [SortDescriptor(\.holderName)]
+            )
             return try context.fetch(descriptor).filter { account in
-                guard let owner = account.ownerID else { return true }
+                guard let owner = account.ownerID else { return false }
                 return testUserIDs.contains(owner)
             }
         } catch {

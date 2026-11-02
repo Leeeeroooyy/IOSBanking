@@ -5,11 +5,14 @@ import UIKit
 struct AccountDetailView: View {
     let account: Account
 
+    private let banking: any BankingService
     @State private var model: TransactionsViewModel
     @State private var showsCopied = false
+    @State private var showsStatement = false
 
     init(account: Account, banking: any BankingService) {
         self.account = account
+        self.banking = banking
         _model = State(initialValue: TransactionsViewModel(accountIDs: [account.id], banking: banking))
     }
 
@@ -24,6 +27,19 @@ struct AccountDetailView: View {
             }
         }
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button {
+                    showsStatement = true
+                } label: {
+                    Label("statement.title", systemImage: "doc.richtext")
+                }
+                .accessibilityIdentifier("accountDetail.statement")
+            }
+        }
+        .sheet(isPresented: $showsStatement) {
+            StatementView(account: account, banking: banking)
+        }
         .onAppear { model.load() }
     }
 

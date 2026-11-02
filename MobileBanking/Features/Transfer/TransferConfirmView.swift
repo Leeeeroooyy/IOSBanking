@@ -3,6 +3,7 @@ import SwiftUI
 /// The last check before the money moves.
 struct TransferConfirmView: View {
     @Bindable var model: TransferViewModel
+    @Environment(\.locale) private var locale
 
     var body: some View {
         ScrollView {
@@ -24,6 +25,21 @@ struct TransferConfirmView: View {
                     summary(request)
                 }
 
+                if model.requiresBiometrics {
+                    Label("transfer.confirm.faceIDNote", systemImage: "faceid")
+                        .font(.footnote.weight(.semibold))
+                        .foregroundStyle(Theme.Colors.primary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+
+                if let error = model.biometricError {
+                    Text(error)
+                        .font(.footnote)
+                        .foregroundStyle(Theme.Colors.negative)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .accessibilityIdentifier("transferConfirm.biometricError")
+                }
+
                 Label("transfer.confirm.demoNote", systemImage: "info.circle")
                     .font(.footnote)
                     .foregroundStyle(Theme.Colors.textSecondary)
@@ -31,7 +47,9 @@ struct TransferConfirmView: View {
 
                 VStack(spacing: Theme.Spacing.m) {
                     Button {
-                        model.confirm()
+                        Task {
+                            await model.confirm(biometricReason: .localized("transfer.confirm.faceIDReason", locale: locale))
+                        }
                     } label: {
                         if model.isProcessing {
                             ProgressView().tint(Theme.Colors.onAccent)

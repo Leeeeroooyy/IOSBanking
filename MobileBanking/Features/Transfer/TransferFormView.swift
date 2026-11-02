@@ -6,8 +6,8 @@ struct TransferFormView: View {
     @State private var showsMoreSymbols = false
     @FocusState private var focus: TransferViewModel.Field?
 
-    init(user: User, banking: any BankingService) {
-        _model = State(initialValue: TransferViewModel(user: user, banking: banking))
+    init(user: User, banking: any BankingService, biometrics: any BiometricService, templates: any TemplateService) {
+        _model = State(initialValue: TransferViewModel(user: user, banking: banking, biometrics: biometrics, templates: templates))
     }
 
     var body: some View {
@@ -43,6 +43,10 @@ struct TransferFormView: View {
     private var form: some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.l) {
             sourcePicker
+
+            if !model.templates.isEmpty {
+                templateList
+            }
 
             if !model.suggestedRecipients.isEmpty {
                 recipientSuggestions
@@ -160,6 +164,54 @@ struct TransferFormView: View {
     /// VoiceOver says "selected" for the chosen source account.
     private func selectionTraits(for account: Account) -> AccessibilityTraits {
         model.fromAccountID == account.id ? .isSelected : []
+    }
+
+    /// Saved payments: one tap fills the whole form, long press deletes.
+    private var templateList: some View {
+        VStack(alignment: .leading, spacing: Theme.Spacing.s) {
+            Text("templates.title")
+                .font(Theme.Typography.label)
+                .foregroundStyle(Theme.Colors.textSecondary)
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: Theme.Spacing.s) {
+                    ForEach(model.templates, id: \.id) { template in
+                        Button {
+                            model.apply(template)
+                        } label: {
+                            VStack(alignment: .leading, spacing: 2) {
+                                Label {
+                                    Text(verbatim: template.name)
+                                } icon: {
+                                    Image(systemName: "star.fill").foregroundStyle(Theme.Colors.accent)
+                                }
+                                .font(.subheadline.weight(.semibold))
+                                .foregroundStyle(Theme.Colors.textPrimary)
+                                if let amount = template.amount {
+                                    AmountText(amount: amount.amount, currencyCode: amount.currencyCode, font: .caption.weight(.semibold))
+                                }
+                            }
+                            .padding(.horizontal, Theme.Spacing.m)
+                            .padding(.vertical, Theme.Spacing.s)
+                            .frame(minHeight: 44)
+                            .background(Theme.Colors.surfaceRaised, in: RoundedRectangle(cornerRadius: Theme.Radius.s, style: .continuous))
+                            .overlay(RoundedRectangle(cornerRadius: Theme.Radius.s, style: .continuous).stroke(Theme.Colors.border))
+                        }
+                        .buttonStyle(.plain)
+                        .contextMenu {
+                            Button("templates.delete", systemImage: "trash", role: .destructive) {
+                                model.deleteTemplate(template)
+                            }
+                        }
+                        .accessibilityHint(Text("templates.hint"))
+                    }
+                }
+            }
+            if let error = model.templateError {
+                Text(error)
+                    .font(.footnote)
+                    .foregroundStyle(Theme.Colors.negative)
+            }
+        }
     }
 
     /// One tap fills in an own account or another client of the demo bank.

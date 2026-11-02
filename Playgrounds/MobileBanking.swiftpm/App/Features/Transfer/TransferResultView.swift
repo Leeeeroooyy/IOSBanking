@@ -3,6 +3,8 @@ import SwiftUI
 /// Success or failure of the payment.
 struct TransferResultView: View {
     @Bindable var model: TransferViewModel
+    @State private var isNamingTemplate = false
+    @State private var templateName = ""
 
     var body: some View {
         VStack(spacing: Theme.Spacing.xl) {
@@ -54,9 +56,38 @@ struct TransferResultView: View {
                 .foregroundStyle(Theme.Colors.textSecondary)
                 .multilineTextAlignment(.center)
 
+            if model.isRequestSavedAsTemplate {
+                Label("templates.saved", systemImage: "star.fill")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(Theme.Colors.primary)
+            } else {
+                Button {
+                    templateName = model.request?.recipientName ?? ""
+                    isNamingTemplate = true
+                } label: {
+                    Label("templates.save", systemImage: "star")
+                }
+                .buttonStyle(.secondary)
+                .accessibilityIdentifier("transferResult.saveTemplate")
+            }
+
+            if let error = model.templateError {
+                Text(error)
+                    .font(.footnote)
+                    .foregroundStyle(Theme.Colors.negative)
+            }
+
             Button("transfer.result.done") { model.startNewPayment() }
                 .buttonStyle(.primary)
                 .accessibilityIdentifier("transferResult.done")
+        }
+        .alert("templates.save", isPresented: $isNamingTemplate) {
+            TextField("templates.name", text: $templateName)
+            Button("templates.save.confirm") { model.saveTemplate(named: templateName) }
+                .disabled(templateName.trimmingCharacters(in: .whitespaces).isEmpty)
+            Button("templates.cancel", role: .cancel) {}
+        } message: {
+            Text("templates.save.message")
         }
     }
 

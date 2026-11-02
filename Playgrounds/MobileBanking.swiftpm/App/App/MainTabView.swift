@@ -26,7 +26,12 @@ struct MainTabView: View {
             .tag(MainTab.dashboard)
 
             NavigationStack {
-                TransferFormView(user: user, banking: dependencies.banking)
+                TransferFormView(
+                    user: user,
+                    banking: dependencies.banking,
+                    biometrics: dependencies.biometrics,
+                    templates: dependencies.templates
+                )
             }
             .tabItem { Label("tab.payments", systemImage: "arrow.left.arrow.right") }
             .tag(MainTab.payments)

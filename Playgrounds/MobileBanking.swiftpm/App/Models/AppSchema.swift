@@ -8,6 +8,7 @@ enum AppSchema {
         Account.self,
         BankTransaction.self,
         WatchlistItem.self,
+        PaymentTemplate.self,
     ])
 
     static func makeContainer(inMemory: Bool) throws -> ModelContainer {

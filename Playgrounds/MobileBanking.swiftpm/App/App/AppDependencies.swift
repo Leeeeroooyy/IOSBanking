@@ -20,6 +20,8 @@ final class AppDependencies {
     /// Demo quotes until a real provider is chosen; the watchlist is stored locally.
     let stocks: any StockService
     let watchlist: any WatchlistService
+    /// Saved payments (templates and favourite recipients).
+    let templates: any TemplateService
     /// The user's own Finnhub API key (Keychain). Without it, stocks are demo data.
     let stockAPIKey: StockAPIKeyStore
     /// Creates the built-in test profiles (only in the real app, not in UI tests or previews).
@@ -31,6 +33,7 @@ final class AppDependencies {
         biometrics: any BiometricService,
         biometricSettings: BiometricSettings,
         watchlist: any WatchlistService,
+        templates: any TemplateService,
         stockAPIKey: StockAPIKeyStore,
         stocks: (any StockService)? = nil,
         news: (any NewsService)? = nil
@@ -43,6 +46,7 @@ final class AppDependencies {
         self.stockAPIKey = stockAPIKey
         self.stocks = stocks ?? SwitchingStockService(keyStore: stockAPIKey)
         self.watchlist = watchlist
+        self.templates = templates
         session = SessionStore(auth: auth, biometricSettings: biometricSettings)
     }
 
@@ -63,12 +67,15 @@ final class AppDependencies {
         let keychain = SystemKeychainService()
         let auth = LocalAuthService(container: container, keychain: keychain)
         let banking = LocalBankingService(container: container)
+        // Removes the old invented history once, before any screen reads the data.
+        banking.resetDemoDataIfNeeded()
         let dependencies = AppDependencies(
             auth: auth,
             banking: banking,
             biometrics: LocalBiometricService(),
             biometricSettings: BiometricSettings(),
             watchlist: LocalWatchlistService(container: container),
+            templates: LocalTemplateService(container: container),
             stockAPIKey: StockAPIKeyStore(keychain: keychain)
         )
         dependencies.prepareTestAccounts = {
@@ -91,13 +98,16 @@ final class AppDependencies {
             biometrics: LocalBiometricService(),
             biometricSettings: BiometricSettings(),
             watchlist: LocalWatchlistService(container: container),
+            templates: LocalTemplateService(container: container),
             stockAPIKey: StockAPIKeyStore(keychain: keychain)
         )
     }
 
     /// Lets UI tests reach the signed-in screens without going through the sign-up form.
     private static func addDemoSession(container: ModelContainer, keychain: any KeychainService) {
-        let user = User(fullName: "Jana Novakova", email: "jana@example.cz")
+        // The first test profile, so the UI tests see accounts with money.
+        let profile = TestAccounts.profiles[0]
+        let user = User(fullName: profile.fullName, email: profile.email)
         container.mainContext.insert(user)
         try? container.mainContext.save()
         try? keychain.save(Data(user.id.uuidString.utf8), account: LocalAuthService.sessionAccount)

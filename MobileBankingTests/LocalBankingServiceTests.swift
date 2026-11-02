@@ -19,8 +19,9 @@ final class LocalBankingServiceTests: XCTestCase {
         container = nil
     }
 
-    private func makeUser(_ name: String = "Jana Nováková") -> User {
-        let user = User(fullName: name, email: "\(UUID().uuidString)@example.cz")
+    /// A test profile (starts with money) unless `email` says otherwise.
+    private func makeUser(_ name: String = "Jana Nováková", email: String = TestAccounts.profiles[0].email) -> User {
+        let user = User(fullName: name, email: email)
         container.mainContext.insert(user)
         return user
     }
@@ -61,16 +62,25 @@ final class LocalBankingServiceTests: XCTestCase {
         }
     }
 
-    func testTransferToSavingsIsOnePairWithOneID() throws {
+    /// Only the test profiles start with money; a registered user starts with two empty accounts.
+    func testRegisteredUserStartsWithEmptyAccounts() throws {
+        let user = makeUser("Nový klient", email: "novy@example.cz")
+        try service.prepareDemoAccounts(for: user)
+
+        let accounts = try service.accounts(ownerID: user.id)
+        XCTAssertEqual(accounts.map(\.kind), [.current, .savings])
+        XCTAssertTrue(accounts.allSatisfy { $0.balanceMinorUnits == 0 })
+        XCTAssertTrue(try service.transactions(accountIDs: accounts.map(\.id), limit: nil).isEmpty)
+    }
+
+    func testTestProfileHasOnlyOpeningDeposits() throws {
         let user = makeUser()
         try service.prepareDemoAccounts(for: user)
         let ids = try service.accounts(ownerID: user.id).map(\.id)
 
-        let transfers = try service.transactions(accountIDs: ids, limit: nil).filter { $0.category == .transfer }
-        XCTAssertEqual(transfers.count, 2)
-        XCTAssertEqual(Set(transfers.map(\.transferID)).count, 1)
-        XCTAssertEqual(Set(transfers.map(\.direction)), [.incoming, .outgoing])
-        XCTAssertEqual(transfers.reduce(Int64(0)) { $0 + $1.signedMinorUnits }, 0, "Money only moved between own accounts")
+        let history = try service.transactions(accountIDs: ids, limit: nil)
+        XCTAssertEqual(history.count, 2)
+        XCTAssertTrue(history.allSatisfy { $0.category == .opening && $0.direction == .incoming })
     }
 
     func testTransactionsAreNewestFirstAndLimited() throws {
@@ -82,13 +92,13 @@ final class LocalBankingServiceTests: XCTestCase {
         XCTAssertEqual(all.map(\.date), all.map(\.date).sorted(by: >))
         XCTAssertTrue(all.allSatisfy { $0.date <= now })
 
-        let recent = try service.transactions(accountIDs: ids, limit: 5)
-        XCTAssertEqual(recent.map(\.id), Array(all.prefix(5)).map(\.id))
+        let recent = try service.transactions(accountIDs: ids, limit: 1)
+        XCTAssertEqual(recent.map(\.id), Array(all.prefix(1)).map(\.id))
     }
 
     func testUsersSeeOnlyTheirOwnAccounts() throws {
-        let jana = makeUser("Jana Nováková")
-        let petr = makeUser("Petr Svoboda")
+        let jana = makeUser("Jana Nováková", email: TestAccounts.profiles[0].email)
+        let petr = makeUser("Petr Svoboda", email: TestAccounts.profiles[1].email)
         try service.prepareDemoAccounts(for: jana)
         try service.prepareDemoAccounts(for: petr)
 

@@ -12,7 +12,7 @@ final class MainScreensUITests: XCTestCase {
 
         let userName = app.staticTexts["dashboard.userName"]
         XCTAssertTrue(userName.waitForExistence(timeout: 10))
-        XCTAssertEqual(userName.label, "Jana Novakova")
+        XCTAssertEqual(userName.label, "Tomáš Král")
         attachScreenshot(named: "dashboard-light")
     }
 
@@ -47,15 +47,15 @@ final class MainScreensUITests: XCTestCase {
         XCTAssertEqual(title.label, "Běžný účet")
         attachScreenshot(named: "account-detail")
 
-        // The newest transaction of the demo current account: Petr Svoboda returns a loan.
+        // The opening deposit of the test profile's current account.
         let row = app.descendants(matching: .any)
-            .matching(NSPredicate(format: "label CONTAINS %@", "Petr Svoboda"))
+            .matching(NSPredicate(format: "label CONTAINS %@", "Demo banka"))
             .firstMatch
         XCTAssertTrue(row.waitForExistence(timeout: 5))
         row.tap()
 
         XCTAssertTrue(app.staticTexts["transactionDetail.counterparty"].waitForExistence(timeout: 5))
-        XCTAssertEqual(app.staticTexts["transactionDetail.counterparty"].label, "Petr Svoboda")
+        XCTAssertEqual(app.staticTexts["transactionDetail.counterparty"].label, "Demo banka")
         attachScreenshot(named: "transaction-detail")
     }
 
@@ -66,16 +66,16 @@ final class MainScreensUITests: XCTestCase {
         let filter = app.segmentedControls["transactions.filter"]
         XCTAssertTrue(filter.waitForExistence(timeout: 5))
 
-        // Petr Svoboda sent money today, so he is at the top of the history.
-        let petr = app.descendants(matching: .any)
-            .matching(NSPredicate(format: "label CONTAINS %@", "Petr Svoboda")).firstMatch
-        XCTAssertTrue(petr.waitForExistence(timeout: 5))
+        // The opening deposits are incoming payments from the demo bank.
+        let deposit = app.descendants(matching: .any)
+            .matching(NSPredicate(format: "label CONTAINS %@", "Demo banka")).firstMatch
+        XCTAssertTrue(deposit.waitForExistence(timeout: 5))
 
         filter.buttons["Odchozí"].tap()
-        XCTAssertFalse(petr.waitForExistence(timeout: 2), "An incoming payment must be hidden by the outgoing filter")
+        XCTAssertFalse(deposit.waitForExistence(timeout: 2), "An incoming payment must be hidden by the outgoing filter")
 
         filter.buttons["Příchozí"].tap()
-        XCTAssertTrue(petr.waitForExistence(timeout: 5))
+        XCTAssertTrue(deposit.waitForExistence(timeout: 5))
         attachScreenshot(named: "transactions-incoming")
     }
 
@@ -110,7 +110,7 @@ final class MainScreensUITests: XCTestCase {
         let app = launchApp(signedIn: true)
 
         waitAndTap(app.tabBars.buttons["Profil"])
-        XCTAssertTrue(app.staticTexts["jana@example.cz"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["test1@mobilebanking.cz"].waitForExistence(timeout: 5))
         attachScreenshot(named: "profile")
 
         waitAndTap(app.buttons["profile.settings"])

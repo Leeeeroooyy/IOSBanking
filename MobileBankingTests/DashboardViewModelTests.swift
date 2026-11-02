@@ -12,7 +12,7 @@ final class DashboardViewModelTests: XCTestCase {
 
     func testLoadShowsAccountsTotalAndRecentTransactions() throws {
         let (banking, _) = try makeBanking()
-        let model = DashboardViewModel(user: User(fullName: "Jana Nováková", email: "jana@example.cz"), banking: banking)
+        let model = DashboardViewModel(user: User(fullName: "Jana Nováková", email: TestAccounts.profiles[0].email), banking: banking)
         XCTAssertEqual(model.state, .loading)
 
         model.load()
@@ -20,7 +20,8 @@ final class DashboardViewModelTests: XCTestCase {
         XCTAssertEqual(model.state, .loaded)
         XCTAssertEqual(model.accounts.count, 2)
         XCTAssertEqual(model.totalBalance, Decimal(165_250))
-        XCTAssertEqual(model.recentTransactions.count, DashboardViewModel.recentLimit)
+        // Only the two opening deposits exist so far.
+        XCTAssertEqual(model.recentTransactions.count, 2)
     }
 
     func testFailingStorageShowsErrorState() {
@@ -32,7 +33,7 @@ final class DashboardViewModelTests: XCTestCase {
 
     func testTransactionFilter() throws {
         let (banking, _) = try makeBanking()
-        let user = User(fullName: "Jana", email: "jana@example.cz")
+        let user = User(fullName: "Jana", email: TestAccounts.profiles[0].email)
         try banking.prepareDemoAccounts(for: user)
         let ids = try banking.accounts(ownerID: user.id).map(\.id)
         let model = TransactionsViewModel(accountIDs: ids, banking: banking)
