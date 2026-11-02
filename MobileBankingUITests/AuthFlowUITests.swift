@@ -86,14 +86,15 @@ final class AuthFlowUITests: XCTestCase {
         openSignUp(in: app)
         type(fullName + "\n", into: app.textFields["register.fullName"], tapsField: true)
         type(email + "\n", into: app.textFields["register.email"])
-        type(password + "\n", into: app.secureTextFields["register.password"])
+        type(password + "\n", into: app.textFields["register.password"])
 
-        let passwordField = app.secureTextFields["register.password"]
-        let confirmation = app.secureTextFields["register.passwordConfirmation"]
+        let passwordField = app.textFields["register.password"]
+        let confirmation = app.textFields["register.passwordConfirmation"]
         type(password, into: confirmation)
-        // Secure values arrive masked, so only their lengths say whether a field was cleared.
-        let lengths = [passwordField, confirmation].map { ($0.value as? String ?? "").count }
-        attachText("password lengths: \(lengths), expected 8 and 8", named: "secure-lengths")
+        // In UI tests the password fields are plain text fields (see AppTextField),
+        // so their values can be checked directly.
+        XCTAssertEqual(passwordField.value as? String, password)
+        XCTAssertEqual(confirmation.value as? String, password)
         attachScreenshot(named: "sign-up-before-submit")
         confirmation.typeText("\n")
     }
@@ -120,7 +121,7 @@ final class AuthFlowUITests: XCTestCase {
 
     private func signIn(in app: XCUIApplication, password: String) {
         type(email + "\n", into: app.textFields["login.email"], tapsField: true)
-        type(password + "\n", into: app.secureTextFields["login.password"])
+        type(password + "\n", into: app.textFields["login.password"])
     }
 
     private func type(_ text: String, into field: XCUIElement, tapsField: Bool = false) {

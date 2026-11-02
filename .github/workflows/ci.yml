@@ -30,6 +30,14 @@ jobs:
           echo "Using simulator $UDID"
           echo "udid=$UDID" >> "$GITHUB_OUTPUT"
 
+      # With a "hardware keyboard" connected, the simulator drops characters typed
+      # into secure (password) fields during UI tests. Use the on-screen keyboard instead.
+      - name: Use the software keyboard in the simulator
+        run: |
+          defaults write com.apple.iphonesimulator ConnectHardwareKeyboard -bool false
+          xcrun simctl boot "${{ steps.simulator.outputs.udid }}" || true
+          xcrun simctl bootstatus "${{ steps.simulator.outputs.udid }}" -b
+
       - name: Build and run tests
         run: |
           set -o pipefail

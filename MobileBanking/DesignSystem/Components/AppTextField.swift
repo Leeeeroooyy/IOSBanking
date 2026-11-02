@@ -57,11 +57,29 @@ struct AppTextField: View {
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
         case .password:
-            // Not `.newPassword`: a demo app must not offer to generate or save a real password.
-            SecureField("", text: $text)
-                .textContentType(.password)
+            if Self.usesPlainPasswordFields {
+                TextField("", text: $text)
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
+            } else {
+                // Not `.newPassword`: a demo app must not offer to generate or save a real password.
+                SecureField("", text: $text)
+                    .textContentType(.password)
+            }
         }
     }
+
+    /// UI tests only (debug build, `-uiTesting`): the simulator's password handling drops
+    /// characters typed by XCUITest into secure fields on CI, so tests type into plain fields.
+    /// Real users always get a `SecureField`; password hashing is covered by unit tests.
+    private static let usesPlainPasswordFields: Bool = {
+        #if DEBUG
+        // Same value as `AppDependencies.uiTestingArgument` (that one is main-actor isolated).
+        return ProcessInfo.processInfo.arguments.contains("-uiTesting")
+        #else
+        return false
+        #endif
+    }()
 }
 
 #Preview {
