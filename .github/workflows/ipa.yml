@@ -1,0 +1,43 @@
+name: Build IPA
+
+# Builds an UNSIGNED .ipa for a real iPhone/iPad. It cannot be installed as is:
+# sign and install it from Windows or macOS with your own Apple ID (e.g. Sideloadly).
+# Download: Actions → "Build IPA" → the latest run → Artifacts → MobileBanking-ipa.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  ipa:
+    runs-on: macos-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build for device without signing
+        run: |
+          xcodebuild build \
+            -project MobileBanking.xcodeproj \
+            -scheme MobileBanking \
+            -configuration Release \
+            -sdk iphoneos \
+            -destination 'generic/platform=iOS' \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY=""
+
+      - name: Package the .ipa
+        run: |
+          mkdir -p Payload
+          cp -R build/Build/Products/Release-iphoneos/MobileBanking.app Payload/
+          zip -qry MobileBanking.ipa Payload
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: MobileBanking-ipa
+          path: MobileBanking.ipa
+          retention-days: 14
