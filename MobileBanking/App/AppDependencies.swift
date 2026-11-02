@@ -68,9 +68,8 @@ final class AppDependencies {
     }
 
     private static func makeContainer(inMemory: Bool) -> ModelContainer {
-        let configuration = ModelConfiguration(isStoredInMemoryOnly: inMemory)
         do {
-            return try ModelContainer(for: User.self, configurations: configuration)
+            return try AppSchema.makeContainer(inMemory: inMemory)
         } catch {
             // The app cannot do anything useful without its database.
             fatalError("Could not open the local database.")
