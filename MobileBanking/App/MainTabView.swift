@@ -32,15 +32,13 @@ struct MainTabView: View {
             .tag(MainTab.payments)
 
             NavigationStack {
-                ComingSoonView(titleKey: "placeholder.markets.title", systemImage: "chart.line.uptrend.xyaxis")
-                    .navigationTitle("tab.markets")
+                MarketsView(service: dependencies.exchangeRates)
             }
             .tabItem { Label("tab.markets", systemImage: "chart.line.uptrend.xyaxis") }
             .tag(MainTab.markets)
 
             NavigationStack {
-                ComingSoonView(titleKey: "placeholder.news.title", systemImage: "newspaper")
-                    .navigationTitle("tab.news")
+                NewsListView(service: dependencies.news)
             }
             .tabItem { Label("tab.news", systemImage: "newspaper") }
             .tag(MainTab.news)

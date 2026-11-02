@@ -89,12 +89,12 @@ final class MainScreensUITests: XCTestCase {
         XCTAssertTrue(title.waitForExistence(timeout: 5))
     }
 
-    func testCzechTabsShowTheirEmptyStates() {
+    func testCzechTabsShowTheirTitles() {
         let app = launchApp(signedIn: true)
 
         assertTab("Platby", showsTitle: "Nová platba", in: app)
-        assertTab("Trhy", showsTitle: "Trhy zatím nejsou k dispozici", in: app)
-        assertTab("Zprávy", showsTitle: "Zprávy zatím nejsou k dispozici", in: app)
+        assertTab("Trhy", showsTitle: "Kurzy měn", in: app)
+        assertTab("Zprávy", showsTitle: "Ekonomické zprávy", in: app)
     }
 
     /// The simulator language must not win over the language chosen in the app.
@@ -102,8 +102,8 @@ final class MainScreensUITests: XCTestCase {
         let app = launchApp(language: "en", signedIn: true)
 
         assertTab("Payments", showsTitle: "New payment", in: app)
-        assertTab("Markets", showsTitle: "Markets are not available yet", in: app)
-        assertTab("News", showsTitle: "News is not available yet", in: app)
+        assertTab("Markets", showsTitle: "Exchange rates", in: app)
+        assertTab("News", showsTitle: "Economic news", in: app)
     }
 
     func testProfileShowsTheUserAndOpensSettings() {

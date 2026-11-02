@@ -757,6 +757,24 @@
         }
       }
     },
+    "common.loading": {
+      "comment": "Progress text while data loads",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Načítání…"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Loading…"
+          }
+        }
+      }
+    },
     "common.retry": {
       "comment": "Retry button",
       "extractionState": "manual",
@@ -1063,6 +1081,60 @@
         }
       }
     },
+    "error.offline.message": {
+      "comment": "Network error: offline",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nejste připojeni k internetu. Zkontrolujte připojení a zkuste to znovu."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You are not connected to the internet. Check your connection and try again."
+          }
+        }
+      }
+    },
+    "error.server.message": {
+      "comment": "Network error: server or unreadable answer",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zdroj dat je momentálně nedostupný. Zkuste to prosím později."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The data source is not available right now. Please try again later."
+          }
+        }
+      }
+    },
+    "error.timeout.message": {
+      "comment": "Network error: timeout",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Server neodpověděl včas. Zkuste to prosím znovu."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The server did not respond in time. Please try again."
+          }
+        }
+      }
+    },
     "lock.reason": {
       "comment": "Text in the system Face ID prompt",
       "extractionState": "manual",
@@ -1225,20 +1297,416 @@
         }
       }
     },
-    "placeholder.markets.title": {
-      "comment": "Empty state",
+    "markets.calculator": {
+      "comment": "Section title",
       "extractionState": "manual",
       "localizations": {
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Trhy zatím nejsou k dispozici"
+            "value": "Kalkulačka"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Markets are not available yet"
+            "value": "Calculator"
+          }
+        }
+      }
+    },
+    "markets.calculator.amount": {
+      "comment": "Calculator field",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Částka v cizí měně"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Amount in foreign currency"
+          }
+        }
+      }
+    },
+    "markets.calculator.currency": {
+      "comment": "Calculator currency picker",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Měna"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Currency"
+          }
+        }
+      }
+    },
+    "markets.calculator.result": {
+      "comment": "Calculator result label",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odpovídá v Kč"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Equals in CZK"
+          }
+        }
+      }
+    },
+    "markets.noResults": {
+      "comment": "Search with no results",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Žádná měna neodpovídá hledání."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No currency matches your search."
+          }
+        }
+      }
+    },
+    "markets.otherCurrencies": {
+      "comment": "Header above the remaining currencies",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Další měny"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Other currencies"
+          }
+        }
+      }
+    },
+    "markets.rates": {
+      "comment": "Section title",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kurzovní lístek"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rate list"
+          }
+        }
+      }
+    },
+    "markets.row.hint": {
+      "comment": "VoiceOver hint of a rate row",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Použije měnu v kalkulačce"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uses the currency in the calculator"
+          }
+        }
+      }
+    },
+    "markets.search": {
+      "comment": "Search field placeholder",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hledat měnu nebo zemi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search currency or country"
+          }
+        }
+      }
+    },
+    "markets.source": {
+      "comment": "Data source note under the rates",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zdroj: Česká národní banka (cnb.cz), kurzy devizového trhu. ČNB je vyhlašuje v pracovní dny po 14:30. Jsou pouze informativní – aplikace s nimi neprovádí žádné směny."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Source: Czech National Bank (cnb.cz), foreign exchange market rates, published on working days after 14:30. For information only – the app makes no currency exchanges."
+          }
+        }
+      }
+    },
+    "markets.subtitle": {
+      "comment": "Markets header subtitle before data loads",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kurzovní lístek České národní banky"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Czech National Bank exchange rate list"
+          }
+        }
+      }
+    },
+    "markets.title": {
+      "comment": "Markets tab header",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kurzy měn"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exchange rates"
+          }
+        }
+      }
+    },
+    "markets.validFor %@": {
+      "comment": "Markets header subtitle; date of the rate list",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kurzy ČNB platné pro %@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "CNB rates valid for %@"
+          }
+        }
+      }
+    },
+    "news.category.all": {
+      "comment": "News category",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vše"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All"
+          }
+        }
+      }
+    },
+    "news.category.ecb": {
+      "comment": "News category: European Central Bank",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ECB"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ECB"
+          }
+        }
+      }
+    },
+    "news.category.press": {
+      "comment": "News category: ČSÚ press releases",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tiskové zprávy"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Press releases"
+          }
+        }
+      }
+    },
+    "news.category.statistics": {
+      "comment": "News category: ČSÚ quick information",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Statistiky"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Statistics"
+          }
+        }
+      }
+    },
+    "news.disclaimer": {
+      "comment": "Source note under the news list",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zprávy pocházejí z veřejných RSS kanálů ČSÚ (csu.gov.cz) a ECB (ecb.europa.eu). Zprávy ECB jsou pouze v angličtině."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "News comes from the public RSS feeds of the CZSO (csu.gov.cz) and the ECB (ecb.europa.eu)."
+          }
+        }
+      }
+    },
+    "news.empty": {
+      "comment": "Empty news list",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Žádné zprávy"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No news"
+          }
+        }
+      }
+    },
+    "news.openArticle": {
+      "comment": "Button: open the article on the web",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otevřít celý článek"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open the full article"
+          }
+        }
+      }
+    },
+    "news.share": {
+      "comment": "Share button",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sdílet"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share"
+          }
+        }
+      }
+    },
+    "news.subtitle": {
+      "comment": "News header subtitle",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ČSÚ a Evropská centrální banka"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Czech Statistical Office and the ECB"
+          }
+        }
+      }
+    },
+    "news.title": {
+      "comment": "News tab header",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ekonomické zprávy"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Economic news"
           }
         }
       }
@@ -1257,24 +1725,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "This part will arrive in one of the next development stages."
-          }
-        }
-      }
-    },
-    "placeholder.news.title": {
-      "comment": "Empty state",
-      "extractionState": "manual",
-      "localizations": {
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zprávy zatím nejsou k dispozici"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "News is not available yet"
           }
         }
       }

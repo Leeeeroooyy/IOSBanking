@@ -21,8 +21,8 @@ final class AuthFlowUITests: XCTestCase {
 
         let tabs = [
             ("Platby", "Nová platba"),
-            ("Trhy", "Trhy zatím nejsou k dispozici"),
-            ("Zprávy", "Zprávy zatím nejsou k dispozici")
+            ("Trhy", "Kurzy měn"),
+            ("Zprávy", "Ekonomické zprávy")
         ]
         for (tab, emptyTitle) in tabs {
             waitAndTap(app.tabBars.buttons[tab])

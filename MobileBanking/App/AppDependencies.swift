@@ -15,6 +15,9 @@ final class AppDependencies {
     let biometrics: any BiometricService
     let biometricSettings: BiometricSettings
     let session: SessionStore
+    /// Live data from the internet (free public sources, no API keys).
+    let exchangeRates: any ExchangeRateService
+    let news: any NewsService
     /// Creates the built-in test profiles (only in the real app, not in UI tests or previews).
     @ObservationIgnored var prepareTestAccounts: (@MainActor () async -> Void)?
 
@@ -22,12 +25,16 @@ final class AppDependencies {
         auth: any AuthService,
         banking: any BankingService,
         biometrics: any BiometricService,
-        biometricSettings: BiometricSettings
+        biometricSettings: BiometricSettings,
+        exchangeRates: (any ExchangeRateService)? = nil,
+        news: (any NewsService)? = nil
     ) {
         self.auth = auth
         self.banking = banking
         self.biometrics = biometrics
         self.biometricSettings = biometricSettings
+        self.exchangeRates = exchangeRates ?? CNBExchangeRateService()
+        self.news = news ?? RSSNewsService()
         session = SessionStore(auth: auth, biometricSettings: biometricSettings)
     }
 
