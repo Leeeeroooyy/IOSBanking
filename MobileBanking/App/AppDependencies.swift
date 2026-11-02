@@ -18,6 +18,9 @@ final class AppDependencies {
     /// Live data from the internet (free public sources, no API keys).
     let exchangeRates: any ExchangeRateService
     let news: any NewsService
+    /// Demo quotes until a real provider is chosen; the watchlist is stored locally.
+    let stocks: any StockService
+    let watchlist: any WatchlistService
     /// Creates the built-in test profiles (only in the real app, not in UI tests or previews).
     @ObservationIgnored var prepareTestAccounts: (@MainActor () async -> Void)?
 
@@ -26,6 +29,8 @@ final class AppDependencies {
         banking: any BankingService,
         biometrics: any BiometricService,
         biometricSettings: BiometricSettings,
+        watchlist: any WatchlistService,
+        stocks: (any StockService)? = nil,
         exchangeRates: (any ExchangeRateService)? = nil,
         news: (any NewsService)? = nil
     ) {
@@ -35,6 +40,8 @@ final class AppDependencies {
         self.biometricSettings = biometricSettings
         self.exchangeRates = exchangeRates ?? CNBExchangeRateService()
         self.news = news ?? RSSNewsService()
+        self.stocks = stocks ?? DemoStockService()
+        self.watchlist = watchlist
         session = SessionStore(auth: auth, biometricSettings: biometricSettings)
     }
 
@@ -58,7 +65,8 @@ final class AppDependencies {
             auth: auth,
             banking: banking,
             biometrics: LocalBiometricService(),
-            biometricSettings: BiometricSettings()
+            biometricSettings: BiometricSettings(),
+            watchlist: LocalWatchlistService(container: container)
         )
         dependencies.prepareTestAccounts = {
             await TestAccounts.prepare(auth: auth, banking: banking)
@@ -78,7 +86,8 @@ final class AppDependencies {
             auth: LocalAuthService(container: container, keychain: keychain, iterations: 1_000),
             banking: LocalBankingService(container: container),
             biometrics: LocalBiometricService(),
-            biometricSettings: BiometricSettings()
+            biometricSettings: BiometricSettings(),
+            watchlist: LocalWatchlistService(container: container)
         )
     }
 

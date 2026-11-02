@@ -32,7 +32,12 @@ struct MainTabView: View {
             .tag(MainTab.payments)
 
             NavigationStack {
-                MarketsView(service: dependencies.exchangeRates)
+                MarketsView(
+                    user: user,
+                    exchangeRates: dependencies.exchangeRates,
+                    stocks: dependencies.stocks,
+                    watchlist: dependencies.watchlist
+                )
             }
             .tabItem { Label("tab.markets", systemImage: "chart.line.uptrend.xyaxis") }
             .tag(MainTab.markets)

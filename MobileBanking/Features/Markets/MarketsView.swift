@@ -1,38 +1,83 @@
 import SwiftUI
 
-/// Tab "Trhy": official ČNB exchange rates (live data from the internet) and a calculator.
+/// Tab "Trhy": official ČNB exchange rates (live data from the internet) with a calculator,
+/// and stocks with the user's watchlist.
 struct MarketsView: View {
+    enum Segment: Hashable {
+        case rates
+        case stocks
+    }
+
     @State private var model: MarketsViewModel
+    @State private var stocks: StocksViewModel
+    @State private var segment: Segment = .rates
     @FocusState private var amountFocused: Bool
 
-    init(service: any ExchangeRateService) {
-        _model = State(initialValue: MarketsViewModel(service: service))
+    init(user: User, exchangeRates: any ExchangeRateService, stocks: any StockService, watchlist: any WatchlistService) {
+        _model = State(initialValue: MarketsViewModel(service: exchangeRates))
+        _stocks = State(initialValue: StocksViewModel(user: user, service: stocks, watchlistService: watchlist))
     }
 
     var body: some View {
         BrandScaffold {
-            VStack(alignment: .leading, spacing: Theme.Spacing.xs) {
-                Text("markets.title")
-                    .font(Theme.Typography.title)
-                    .foregroundStyle(Theme.Colors.onBrand)
-                    .accessibilityAddTraits(.isHeader)
-                    .accessibilityIdentifier("markets.title")
-                Group {
-                    if let list = model.list {
-                        Text("markets.validFor \(list.date, format: .dateTime.day().month(.wide).year())")
-                    } else {
-                        Text("markets.subtitle")
-                    }
+            HStack(alignment: .top) {
+                VStack(alignment: .leading, spacing: Theme.Spacing.xs) {
+                    Text(segment == .rates ? LocalizedStringKey("markets.title") : LocalizedStringKey("stocks.title"))
+                        .font(Theme.Typography.title)
+                        .foregroundStyle(Theme.Colors.onBrand)
+                        .accessibilityAddTraits(.isHeader)
+                        .accessibilityIdentifier("markets.title")
+                    subtitle
+                        .font(.subheadline)
+                        .foregroundStyle(Theme.Colors.onBrandSecondary)
                 }
-                .font(.subheadline)
-                .foregroundStyle(Theme.Colors.onBrandSecondary)
+                Spacer()
+                if segment == .stocks && stocks.isDemo {
+                    DemoBadge()
+                }
             }
         } content: {
-            content
+            VStack(alignment: .leading, spacing: Theme.Spacing.l) {
+                Picker("markets.segment", selection: $segment) {
+                    Text("markets.segment.rates").tag(Segment.rates)
+                    Text("markets.segment.stocks").tag(Segment.stocks)
+                }
+                .pickerStyle(.segmented)
+                .accessibilityIdentifier("markets.segment")
+
+                switch segment {
+                case .rates:
+                    content
+                case .stocks:
+                    StocksContent(model: stocks)
+                }
+            }
         }
         .toolbar(.hidden, for: .navigationBar)
-        .refreshable { await model.load() }
+        .refreshable {
+            switch segment {
+            case .rates: await model.load()
+            case .stocks: await stocks.load()
+            }
+        }
         .task { await model.loadIfNeeded() }
+        .task(id: segment) {
+            if segment == .stocks { await stocks.loadIfNeeded() }
+        }
+        .navigationDestination(for: StockQuote.self) { quote in
+            StockDetailView(quote: quote, model: stocks)
+        }
+    }
+
+    @ViewBuilder
+    private var subtitle: some View {
+        if segment == .stocks {
+            Text("stocks.subtitle")
+        } else if let list = model.list {
+            Text("markets.validFor \(list.date, format: .dateTime.day().month(.wide).year())")
+        } else {
+            Text("markets.subtitle")
+        }
     }
 
     @ViewBuilder
