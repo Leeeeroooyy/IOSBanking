@@ -84,9 +84,7 @@ struct NewsListView: View {
                     .buttonStyle(.plain)
                 }
             }
-            Text("news.disclaimer")
-                .font(.footnote)
-                .foregroundStyle(Theme.Colors.textSecondary)
+            NewsSourcesFooter()
         }
     }
 }
@@ -135,5 +133,25 @@ struct NewsMetaLine: View {
                     .foregroundStyle(Theme.Colors.textSecondary)
             }
         }
+    }
+}
+
+/// Attribution required by the sources: ČSÚ data under CC BY 4.0 (source + link to the terms),
+/// ECB content with the ECB cited as the source.
+struct NewsSourcesFooter: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: Theme.Spacing.s) {
+            Text("news.disclaimer")
+                .foregroundStyle(Theme.Colors.textSecondary)
+            Link(destination: RSSNewsService.csuTermsURL) {
+                Label("news.terms.csu", systemImage: "doc.text")
+            }
+            Link(destination: RSSNewsService.ecbTermsURL) {
+                Label("news.terms.ecb", systemImage: "doc.text")
+            }
+        }
+        .font(.footnote)
+        .tint(Theme.Colors.primary)
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 }

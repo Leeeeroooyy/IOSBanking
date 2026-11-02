@@ -34,9 +34,20 @@ struct NewsDetailView: View {
                 }
                 .buttonStyle(.secondary)
 
-                Text(verbatim: article.link.host() ?? "")
-                    .font(.footnote)
-                    .foregroundStyle(Theme.Colors.textSecondary)
+                // Attribution required by the source's terms of use.
+                VStack(alignment: .leading, spacing: Theme.Spacing.xs) {
+                    if article.category == .ecb {
+                        Text("news.attribution.ecb")
+                            .foregroundStyle(Theme.Colors.textSecondary)
+                        Link("news.terms.ecb", destination: RSSNewsService.ecbTermsURL)
+                    } else {
+                        Text("news.attribution.csu")
+                            .foregroundStyle(Theme.Colors.textSecondary)
+                        Link("news.terms.csu", destination: RSSNewsService.csuTermsURL)
+                    }
+                }
+                .font(.footnote)
+                .tint(Theme.Colors.primary)
             }
             .padding(Theme.Spacing.xl)
             .frame(maxWidth: .infinity, alignment: .leading)

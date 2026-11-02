@@ -21,7 +21,7 @@ final class AuthFlowUITests: XCTestCase {
 
         let tabs = [
             ("Platby", "Nová platba"),
-            ("Trhy", "Kurzy měn"),
+            ("Trhy", "Akcie"),
             ("Zprávy", "Ekonomické zprávy")
         ]
         for (tab, emptyTitle) in tabs {

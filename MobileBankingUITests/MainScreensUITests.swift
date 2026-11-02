@@ -93,7 +93,7 @@ final class MainScreensUITests: XCTestCase {
         let app = launchApp(signedIn: true)
 
         assertTab("Platby", showsTitle: "Nová platba", in: app)
-        assertTab("Trhy", showsTitle: "Kurzy měn", in: app)
+        assertTab("Trhy", showsTitle: "Akcie", in: app)
         assertTab("Zprávy", showsTitle: "Ekonomické zprávy", in: app)
     }
 
@@ -102,7 +102,7 @@ final class MainScreensUITests: XCTestCase {
         let app = launchApp(language: "en", signedIn: true)
 
         assertTab("Payments", showsTitle: "New payment", in: app)
-        assertTab("Markets", showsTitle: "Exchange rates", in: app)
+        assertTab("Markets", showsTitle: "Stocks", in: app)
         assertTab("News", showsTitle: "Economic news", in: app)
     }
 

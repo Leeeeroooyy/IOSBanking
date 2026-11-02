@@ -43,6 +43,11 @@ final class RSSNewsService: NewsService {
 
     private let client: APIClient
 
+    /// Terms of use. ČSÚ data are licensed under CC BY 4.0: sharing them requires naming the source
+    /// and a link to these terms. The ECB allows free use when the ECB is cited as the source.
+    static let csuTermsURL = URL(string: "https://csu.gov.cz/podminky_pro_vyuzivani_a_dalsi_zverejnovani_statistickych_udaju_csu")!
+    static let ecbTermsURL = URL(string: "https://www.ecb.europa.eu/home/disclaimer/html/index.en.html")!
+
     init(client: APIClient = APIClient()) {
         self.client = client
     }

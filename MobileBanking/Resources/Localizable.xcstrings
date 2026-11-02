@@ -1315,290 +1315,38 @@
         }
       }
     },
-    "markets.calculator": {
-      "comment": "Section title",
+    "news.attribution.csu": {
+      "comment": "Attribution in the article detail (ČSÚ)",
       "extractionState": "manual",
       "localizations": {
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kalkulačka"
+            "value": "Zdroj: Český statistický úřad (ČSÚ). Data jsou zveřejněna pod licencí CC BY 4.0, aplikace je zobrazuje beze změny obsahu."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Calculator"
+            "value": "Source: Czech Statistical Office (CZSO). The data are published under the CC BY 4.0 licence; the app shows them without changing their content."
           }
         }
       }
     },
-    "markets.calculator.amount": {
-      "comment": "Calculator field",
+    "news.attribution.ecb": {
+      "comment": "Attribution in the article detail (ECB)",
       "extractionState": "manual",
       "localizations": {
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Částka v cizí měně"
+            "value": "Zdroj: Evropská centrální banka (ECB)."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Amount in foreign currency"
-          }
-        }
-      }
-    },
-    "markets.calculator.currency": {
-      "comment": "Calculator currency picker",
-      "extractionState": "manual",
-      "localizations": {
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Měna"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Currency"
-          }
-        }
-      }
-    },
-    "markets.calculator.result": {
-      "comment": "Calculator result label",
-      "extractionState": "manual",
-      "localizations": {
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Odpovídá v Kč"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Equals in CZK"
-          }
-        }
-      }
-    },
-    "markets.noResults": {
-      "comment": "Search with no results",
-      "extractionState": "manual",
-      "localizations": {
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Žádná měna neodpovídá hledání."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No currency matches your search."
-          }
-        }
-      }
-    },
-    "markets.otherCurrencies": {
-      "comment": "Header above the remaining currencies",
-      "extractionState": "manual",
-      "localizations": {
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Další měny"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Other currencies"
-          }
-        }
-      }
-    },
-    "markets.rates": {
-      "comment": "Section title",
-      "extractionState": "manual",
-      "localizations": {
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kurzovní lístek"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rate list"
-          }
-        }
-      }
-    },
-    "markets.row.hint": {
-      "comment": "VoiceOver hint of a rate row",
-      "extractionState": "manual",
-      "localizations": {
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Použije měnu v kalkulačce"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Uses the currency in the calculator"
-          }
-        }
-      }
-    },
-    "markets.search": {
-      "comment": "Search field placeholder",
-      "extractionState": "manual",
-      "localizations": {
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hledat měnu nebo zemi"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Search currency or country"
-          }
-        }
-      }
-    },
-    "markets.segment": {
-      "comment": "Segmented control label (VoiceOver)",
-      "extractionState": "manual",
-      "localizations": {
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zobrazení"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "View"
-          }
-        }
-      }
-    },
-    "markets.segment.rates": {
-      "comment": "Markets segment",
-      "extractionState": "manual",
-      "localizations": {
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kurzy měn"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Exchange rates"
-          }
-        }
-      }
-    },
-    "markets.segment.stocks": {
-      "comment": "Markets segment",
-      "extractionState": "manual",
-      "localizations": {
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Akcie"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Stocks"
-          }
-        }
-      }
-    },
-    "markets.source": {
-      "comment": "Data source note under the rates",
-      "extractionState": "manual",
-      "localizations": {
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zdroj: Česká národní banka (cnb.cz), kurzy devizového trhu. ČNB je vyhlašuje v pracovní dny po 14:30. Jsou pouze informativní – aplikace s nimi neprovádí žádné směny."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Source: Czech National Bank (cnb.cz), foreign exchange market rates, published on working days after 14:30. For information only – the app makes no currency exchanges."
-          }
-        }
-      }
-    },
-    "markets.subtitle": {
-      "comment": "Markets header subtitle before data loads",
-      "extractionState": "manual",
-      "localizations": {
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kurzovní lístek České národní banky"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Czech National Bank exchange rate list"
-          }
-        }
-      }
-    },
-    "markets.title": {
-      "comment": "Markets tab header",
-      "extractionState": "manual",
-      "localizations": {
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kurzy měn"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Exchange rates"
-          }
-        }
-      }
-    },
-    "markets.validFor %@": {
-      "comment": "Markets header subtitle; date of the rate list",
-      "extractionState": "manual",
-      "localizations": {
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kurzy ČNB platné pro %@"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "CNB rates valid for %@"
+            "value": "Source: European Central Bank (ECB)."
           }
         }
       }
@@ -1682,13 +1430,13 @@
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zprávy pocházejí z veřejných RSS kanálů ČSÚ (csu.gov.cz) a ECB (ecb.europa.eu). Zprávy ECB jsou pouze v angličtině."
+            "value": "Zdroj zpráv: Český statistický úřad (csu.gov.cz) a Evropská centrální banka (ecb.europa.eu), veřejné RSS kanály. Zprávy ECB jsou pouze v angličtině."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "News comes from the public RSS feeds of the CZSO (csu.gov.cz) and the ECB (ecb.europa.eu)."
+            "value": "News sources: Czech Statistical Office (csu.gov.cz) and European Central Bank (ecb.europa.eu), public RSS feeds."
           }
         }
       }
@@ -1761,6 +1509,42 @@
           "stringUnit": {
             "state": "translated",
             "value": "Czech Statistical Office and the ECB"
+          }
+        }
+      }
+    },
+    "news.terms.csu": {
+      "comment": "Link to ČSÚ terms",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Podmínky užití dat ČSÚ (licence CC BY 4.0)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "CZSO terms of use (CC BY 4.0 licence)"
+          }
+        }
+      }
+    },
+    "news.terms.ecb": {
+      "comment": "Link to ECB terms",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Podmínky užití obsahu ECB"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ECB terms of use"
           }
         }
       }

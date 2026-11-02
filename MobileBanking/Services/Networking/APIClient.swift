@@ -12,7 +12,7 @@ enum NetworkError: Error, Equatable {
 }
 
 /// Thin wrapper around `URLSession` with async/await.
-/// Every external service (ČNB rates, news feeds) uses it, so error handling lives in one place.
+/// Every external service (news feeds, later stock quotes) uses it, so error handling lives in one place.
 struct APIClient {
     var session: URLSession = .shared
     var timeout: TimeInterval = 15

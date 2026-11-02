@@ -16,7 +16,6 @@ final class AppDependencies {
     let biometricSettings: BiometricSettings
     let session: SessionStore
     /// Live data from the internet (free public sources, no API keys).
-    let exchangeRates: any ExchangeRateService
     let news: any NewsService
     /// Demo quotes until a real provider is chosen; the watchlist is stored locally.
     let stocks: any StockService
@@ -31,14 +30,12 @@ final class AppDependencies {
         biometricSettings: BiometricSettings,
         watchlist: any WatchlistService,
         stocks: (any StockService)? = nil,
-        exchangeRates: (any ExchangeRateService)? = nil,
         news: (any NewsService)? = nil
     ) {
         self.auth = auth
         self.banking = banking
         self.biometrics = biometrics
         self.biometricSettings = biometricSettings
-        self.exchangeRates = exchangeRates ?? CNBExchangeRateService()
         self.news = news ?? RSSNewsService()
         self.stocks = stocks ?? DemoStockService()
         self.watchlist = watchlist

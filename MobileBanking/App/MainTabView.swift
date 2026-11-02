@@ -34,7 +34,6 @@ struct MainTabView: View {
             NavigationStack {
                 MarketsView(
                     user: user,
-                    exchangeRates: dependencies.exchangeRates,
                     stocks: dependencies.stocks,
                     watchlist: dependencies.watchlist
                 )
