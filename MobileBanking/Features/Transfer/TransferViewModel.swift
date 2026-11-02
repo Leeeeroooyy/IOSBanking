@@ -57,7 +57,7 @@ final class TransferViewModel {
 
     /// Own accounts other than the source, then other clients of the demo bank.
     var suggestedRecipients: [Account] {
-        accounts.filter { $0.id != fromAccountID } + recipients
+        accounts.filter { $0.id != fromAccountID } + recipients.filter { $0.ownerID != user.id }
     }
 
     func load() {

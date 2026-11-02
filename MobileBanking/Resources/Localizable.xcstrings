@@ -1027,6 +1027,42 @@
         }
       }
     },
+    "login.testProfiles": {
+      "comment": "Section with one-tap sign-in to test profiles",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Testovací profily"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Test profiles"
+          }
+        }
+      }
+    },
+    "login.testProfiles.password %@": {
+      "comment": "Shows the shared test password",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heslo pro oba profily: %@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Password for both profiles: %@"
+          }
+        }
+      }
+    },
     "login.title": {
       "comment": "Sign-in screen title",
       "extractionState": "manual",

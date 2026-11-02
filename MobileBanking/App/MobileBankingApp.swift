@@ -27,6 +27,7 @@ struct MobileBankingApp: App {
                 // SF Pro Rounded everywhere (layout of design variant C).
                 .fontDesign(.rounded)
                 .tint(Theme.Colors.primary)
+                .task { await dependencies.prepareTestAccounts?() }
         }
     }
 }

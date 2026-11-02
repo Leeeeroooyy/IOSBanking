@@ -66,6 +66,28 @@ final class LocalAuthService: AuthService {
         return user
     }
 
+    /// Creates a user without signing in (used for the built-in test profiles).
+    /// Returns the existing user when the e-mail is already registered.
+    @discardableResult
+    func createUserIfMissing(fullName: String, email: String, password: String) async throws -> User {
+        let email = AuthValidator.normalizedEmail(email)
+        if let existing = try findUser(email: email) { return existing }
+
+        let credential = try await makeCredential(password: password)
+        let user = User(fullName: AuthValidator.normalizedFullName(fullName), email: email)
+        let credentialAccount = Self.credentialAccount(for: user.id)
+        context.insert(user)
+        do {
+            try keychain.save(JSONEncoder().encode(credential), account: credentialAccount)
+            try context.save()
+        } catch {
+            context.rollback()
+            try? keychain.delete(account: credentialAccount)
+            throw AuthError.storageFailed
+        }
+        return user
+    }
+
     func signIn(email: String, password: String) async throws -> User {
         let email = AuthValidator.normalizedEmail(email)
         guard

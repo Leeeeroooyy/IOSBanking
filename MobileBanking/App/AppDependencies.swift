@@ -15,6 +15,8 @@ final class AppDependencies {
     let biometrics: any BiometricService
     let biometricSettings: BiometricSettings
     let session: SessionStore
+    /// Creates the built-in test profiles (only in the real app, not in UI tests or previews).
+    @ObservationIgnored var prepareTestAccounts: (@MainActor () async -> Void)?
 
     init(
         auth: any AuthService,
@@ -43,12 +45,18 @@ final class AppDependencies {
 
         // One database for all services, so they see the same users and accounts.
         let container = makeContainer(inMemory: false)
-        return AppDependencies(
-            auth: LocalAuthService(container: container, keychain: SystemKeychainService()),
-            banking: LocalBankingService(container: container),
+        let auth = LocalAuthService(container: container, keychain: SystemKeychainService())
+        let banking = LocalBankingService(container: container)
+        let dependencies = AppDependencies(
+            auth: auth,
+            banking: banking,
             biometrics: LocalBiometricService(),
             biometricSettings: BiometricSettings()
         )
+        dependencies.prepareTestAccounts = {
+            await TestAccounts.prepare(auth: auth, banking: banking)
+        }
+        return dependencies
     }
 
     /// Nothing survives the run. Used by previews and UI tests.

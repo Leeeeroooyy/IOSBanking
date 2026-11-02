@@ -52,13 +52,20 @@ final class LocalBankingService: BankingService {
     }
 
     func demoRecipients() throws -> [Account] {
-        let noOwner: UUID? = nil
+        let current = Account.Kind.current.rawValue
         let descriptor = FetchDescriptor<Account>(
-            predicate: #Predicate { $0.ownerID == noOwner },
+            predicate: #Predicate { $0.kindRaw == current },
             sortBy: [SortDescriptor(\.holderName)]
         )
         do {
-            return try context.fetch(descriptor)
+            // Other clients of the demo bank (no owner) and the current accounts of the test profiles.
+            let testUserIDs = Set(try context.fetch(FetchDescriptor<User>())
+                .filter { TestAccounts.emails.contains($0.email) }
+                .map(\.id))
+            return try context.fetch(descriptor).filter { account in
+                guard let owner = account.ownerID else { return true }
+                return testUserIDs.contains(owner)
+            }
         } catch {
             throw BankingError.storageFailed
         }

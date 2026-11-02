@@ -62,8 +62,55 @@ struct LoginView: View {
                     .buttonStyle(.secondary)
                     .disabled(viewModel.isSubmitting)
                     .accessibilityIdentifier("login.register")
+
+                testProfiles
             }
         }
+    }
+
+    /// One-tap sign-in to the built-in test profiles, for trying payments between two users.
+    private var testProfiles: some View {
+        VStack(alignment: .leading, spacing: Theme.Spacing.s) {
+            Text("login.testProfiles")
+                .font(Theme.Typography.label)
+                .foregroundStyle(Theme.Colors.textSecondary)
+            ForEach(TestAccounts.profiles, id: \.email) { profile in
+                Button {
+                    viewModel.email = profile.email
+                    viewModel.password = TestAccounts.password
+                    submit()
+                } label: {
+                    HStack(spacing: Theme.Spacing.m) {
+                        Image(systemName: "person.crop.circle")
+                            .font(.title3)
+                            .foregroundStyle(Theme.Colors.primary)
+                            .accessibilityHidden(true)
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(verbatim: profile.fullName)
+                                .font(.subheadline.weight(.bold))
+                                .foregroundStyle(Theme.Colors.textPrimary)
+                            Text(verbatim: profile.email)
+                                .font(.footnote)
+                                .foregroundStyle(Theme.Colors.textSecondary)
+                        }
+                        Spacer()
+                        Image(systemName: "arrow.right.circle.fill")
+                            .foregroundStyle(Theme.Colors.primary)
+                            .accessibilityHidden(true)
+                    }
+                    .padding(Theme.Spacing.m)
+                    .background(Theme.Colors.surfaceRaised, in: RoundedRectangle(cornerRadius: Theme.Radius.m, style: .continuous))
+                    .overlay(RoundedRectangle(cornerRadius: Theme.Radius.m, style: .continuous).stroke(Theme.Colors.border))
+                    .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
+                .disabled(viewModel.isSubmitting)
+            }
+            Text("login.testProfiles.password \(TestAccounts.password)")
+                .font(.footnote)
+                .foregroundStyle(Theme.Colors.textSecondary)
+        }
+        .padding(.top, Theme.Spacing.m)
     }
 
     private func submit() {
