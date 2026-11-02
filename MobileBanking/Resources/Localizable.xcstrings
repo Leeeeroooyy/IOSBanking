@@ -1,6 +1,114 @@
 {
   "sourceLanguage": "cs",
   "strings": {
+    "account.balance": {
+      "comment": "Label above the balance",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zůstatek"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Balance"
+          }
+        }
+      }
+    },
+    "account.copied": {
+      "comment": "Shown after copying",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zkopírováno"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copied"
+          }
+        }
+      }
+    },
+    "account.copy": {
+      "comment": "Copies the account number",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kopírovat"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy"
+          }
+        }
+      }
+    },
+    "account.kind.current": {
+      "comment": "Account type",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Běžný účet"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Current account"
+          }
+        }
+      }
+    },
+    "account.kind.savings": {
+      "comment": "Account type",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spořicí účet"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Savings account"
+          }
+        }
+      }
+    },
+    "account.number": {
+      "comment": "Label",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Číslo účtu"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Account number"
+          }
+        }
+      }
+    },
     "app.name": {
       "comment": "App name in the header",
       "extractionState": "manual",
@@ -343,6 +451,168 @@
         }
       }
     },
+    "category.groceries": {
+      "comment": "Transaction category",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nákup"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Groceries"
+          }
+        }
+      }
+    },
+    "category.interest": {
+      "comment": "Transaction category",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Úroky"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Interest"
+          }
+        }
+      }
+    },
+    "category.opening": {
+      "comment": "Transaction category",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Počáteční vklad"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opening deposit"
+          }
+        }
+      }
+    },
+    "category.other": {
+      "comment": "Transaction category",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Platba"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Payment"
+          }
+        }
+      }
+    },
+    "category.rent": {
+      "comment": "Transaction category",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nájem"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rent"
+          }
+        }
+      }
+    },
+    "category.restaurant": {
+      "comment": "Transaction category",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kavárny a restaurace"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cafés and restaurants"
+          }
+        }
+      }
+    },
+    "category.salary": {
+      "comment": "Transaction category",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mzda"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Salary"
+          }
+        }
+      }
+    },
+    "category.transfer": {
+      "comment": "Transaction category",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Převod mezi účty"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transfer between accounts"
+          }
+        }
+      }
+    },
+    "category.utilities": {
+      "comment": "Transaction category",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Služby a energie"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bills and utilities"
+          }
+        }
+      }
+    },
     "common.retry": {
       "comment": "Retry button",
       "extractionState": "manual",
@@ -361,6 +631,168 @@
         }
       }
     },
+    "dashboard.accounts": {
+      "comment": "Section title",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Moje účty"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "My accounts"
+          }
+        }
+      }
+    },
+    "dashboard.action.news": {
+      "comment": "Quick action",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zprávy"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "News"
+          }
+        }
+      }
+    },
+    "dashboard.action.send": {
+      "comment": "Quick action",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Poslat peníze"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Send money"
+          }
+        }
+      }
+    },
+    "dashboard.action.stocks": {
+      "comment": "Quick action",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Akcie"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stocks"
+          }
+        }
+      }
+    },
+    "dashboard.action.transactions": {
+      "comment": "Quick action",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pohyby"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transactions"
+          }
+        }
+      }
+    },
+    "dashboard.empty": {
+      "comment": "Empty recent list",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zatím žádné pohyby"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No transactions yet"
+          }
+        }
+      }
+    },
+    "dashboard.recent": {
+      "comment": "Section title",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Poslední pohyby"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recent transactions"
+          }
+        }
+      }
+    },
+    "dashboard.recent.all": {
+      "comment": "Opens the full history",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vše"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "See all"
+          }
+        }
+      }
+    },
+    "dashboard.totalBalance": {
+      "comment": "Label above the sum of all accounts",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Celkový zůstatek"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total balance"
+          }
+        }
+      }
+    },
     "dashboard.welcome": {
       "comment": "Greeting above the user name",
       "extractionState": "manual",
@@ -375,6 +807,42 @@
           "stringUnit": {
             "state": "translated",
             "value": "Welcome back"
+          }
+        }
+      }
+    },
+    "date.today": {
+      "comment": "Day header",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dnes"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Today"
+          }
+        }
+      }
+    },
+    "date.yesterday": {
+      "comment": "Day header",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Včera"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yesterday"
           }
         }
       }
@@ -573,24 +1041,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Sign in"
-          }
-        }
-      }
-    },
-    "placeholder.dashboard.title": {
-      "comment": "Empty state",
-      "extractionState": "manual",
-      "localizations": {
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zatím tu nejsou žádné účty"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No accounts yet"
           }
         }
       }
@@ -1023,6 +1473,420 @@
           "stringUnit": {
             "state": "translated",
             "value": "Profile"
+          }
+        }
+      }
+    },
+    "transaction.detail.category": {
+      "comment": "Detail row",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kategorie"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Category"
+          }
+        }
+      }
+    },
+    "transaction.detail.constantSymbol": {
+      "comment": "Detail row",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konstantní symbol"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Constant symbol"
+          }
+        }
+      }
+    },
+    "transaction.detail.counterpartyAccount": {
+      "comment": "Detail row",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Účet protistrany"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Counterparty account"
+          }
+        }
+      }
+    },
+    "transaction.detail.date": {
+      "comment": "Detail row",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Datum a čas"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Date and time"
+          }
+        }
+      }
+    },
+    "transaction.detail.demoNote": {
+      "comment": "Note under the details",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ukázková operace studijního projektu, nejde o skutečnou platbu."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A demo transaction of a study project, not a real payment."
+          }
+        }
+      }
+    },
+    "transaction.detail.direction": {
+      "comment": "Detail row",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Typ"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Type"
+          }
+        }
+      }
+    },
+    "transaction.detail.message": {
+      "comment": "Detail row",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zpráva pro příjemce"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Message for recipient"
+          }
+        }
+      }
+    },
+    "transaction.detail.specificSymbol": {
+      "comment": "Detail row",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Specifický symbol"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Specific symbol"
+          }
+        }
+      }
+    },
+    "transaction.detail.title": {
+      "comment": "Screen title",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Detail pohybu"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transaction details"
+          }
+        }
+      }
+    },
+    "transaction.detail.variableSymbol": {
+      "comment": "Detail row",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Variabilní symbol"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Variable symbol"
+          }
+        }
+      }
+    },
+    "transaction.direction.incoming": {
+      "comment": "Transaction type",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Příchozí platba"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Incoming payment"
+          }
+        }
+      }
+    },
+    "transaction.direction.outgoing": {
+      "comment": "Transaction type",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odchozí platba"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Outgoing payment"
+          }
+        }
+      }
+    },
+    "transaction.fromOwnAccount": {
+      "comment": "Title of an incoming own transfer",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Převod z vlastního účtu"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transfer from own account"
+          }
+        }
+      }
+    },
+    "transaction.status.completed": {
+      "comment": "Transaction status",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Provedeno"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Completed"
+          }
+        }
+      }
+    },
+    "transaction.status.failed": {
+      "comment": "Transaction status",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neprovedeno"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Failed"
+          }
+        }
+      }
+    },
+    "transaction.toOwnAccount": {
+      "comment": "Title of an outgoing own transfer",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Převod na vlastní účet"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transfer to own account"
+          }
+        }
+      }
+    },
+    "transactions.empty.message": {
+      "comment": "Empty state message",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pro vybraný filtr tu nic není."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nothing matches the selected filter."
+          }
+        }
+      }
+    },
+    "transactions.empty.title": {
+      "comment": "Empty state title",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Žádné pohyby"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No transactions"
+          }
+        }
+      }
+    },
+    "transactions.filter": {
+      "comment": "VoiceOver label of the filter",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Filtr pohybů"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transaction filter"
+          }
+        }
+      }
+    },
+    "transactions.filter.all": {
+      "comment": "Filter",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vše"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All"
+          }
+        }
+      }
+    },
+    "transactions.filter.incoming": {
+      "comment": "Filter",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Příchozí"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Incoming"
+          }
+        }
+      }
+    },
+    "transactions.filter.outgoing": {
+      "comment": "Filter",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odchozí"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Outgoing"
+          }
+        }
+      }
+    },
+    "transactions.title": {
+      "comment": "Screen and section title",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pohyby na účtu"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transactions"
           }
         }
       }

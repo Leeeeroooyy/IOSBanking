@@ -3,8 +3,7 @@ import SwiftData
 @testable import MobileBanking
 
 func makeTestContainer() throws -> ModelContainer {
-    let configuration = ModelConfiguration(isStoredInMemoryOnly: true)
-    return try ModelContainer(for: User.self, configurations: configuration)
+    try AppSchema.makeContainer(inMemory: true)
 }
 
 /// One iteration keeps the password hashing in tests fast.

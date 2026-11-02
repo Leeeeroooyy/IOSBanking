@@ -11,12 +11,19 @@ final class AppDependencies {
     static let uiTestingSignedInArgument = "-uiTestingSignedIn"
 
     let auth: any AuthService
+    let banking: any BankingService
     let biometrics: any BiometricService
     let biometricSettings: BiometricSettings
     let session: SessionStore
 
-    init(auth: any AuthService, biometrics: any BiometricService, biometricSettings: BiometricSettings) {
+    init(
+        auth: any AuthService,
+        banking: any BankingService,
+        biometrics: any BiometricService,
+        biometricSettings: BiometricSettings
+    ) {
         self.auth = auth
+        self.banking = banking
         self.biometrics = biometrics
         self.biometricSettings = biometricSettings
         session = SessionStore(auth: auth, biometricSettings: biometricSettings)
@@ -34,11 +41,11 @@ final class AppDependencies {
         }
         #endif
 
+        // One database for all services, so they see the same users and accounts.
+        let container = makeContainer(inMemory: false)
         return AppDependencies(
-            auth: LocalAuthService(
-                container: makeContainer(inMemory: false),
-                keychain: SystemKeychainService()
-            ),
+            auth: LocalAuthService(container: container, keychain: SystemKeychainService()),
+            banking: LocalBankingService(container: container),
             biometrics: LocalBiometricService(),
             biometricSettings: BiometricSettings()
         )
@@ -54,6 +61,7 @@ final class AppDependencies {
 
         return AppDependencies(
             auth: LocalAuthService(container: container, keychain: keychain, iterations: 1_000),
+            banking: LocalBankingService(container: container),
             biometrics: LocalBiometricService(),
             biometricSettings: BiometricSettings()
         )
@@ -68,9 +76,8 @@ final class AppDependencies {
     }
 
     private static func makeContainer(inMemory: Bool) -> ModelContainer {
-        let configuration = ModelConfiguration(isStoredInMemoryOnly: inMemory)
         do {
-            return try ModelContainer(for: User.self, configurations: configuration)
+            return try AppSchema.makeContainer(inMemory: inMemory)
         } catch {
             // The app cannot do anything useful without its database.
             fatalError("Could not open the local database.")

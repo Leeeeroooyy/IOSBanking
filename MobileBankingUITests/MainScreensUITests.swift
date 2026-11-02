@@ -23,6 +23,72 @@ final class MainScreensUITests: XCTestCase {
         attachScreenshot(named: "dashboard-dark")
     }
 
+    func testDashboardShowsBalanceAccountsAndRecentTransactions() {
+        let app = launchApp(signedIn: true)
+
+        let total = app.descendants(matching: .any)["dashboard.totalBalance"]
+        XCTAssertTrue(total.waitForExistence(timeout: 10))
+        // Foundation separates thousands with a non-breaking space, so compare digits only.
+        XCTAssertTrue(total.label.filter(\.isNumber).hasPrefix("16525000"), total.label)
+        XCTAssertTrue(app.descendants(matching: .any)["account.current"].exists)
+        XCTAssertTrue(app.descendants(matching: .any)["account.savings"].exists)
+        attachScreenshot(named: "dashboard-accounts")
+    }
+
+    func testAccountDetailAndTransactionDetail() {
+        let app = launchApp(signedIn: true)
+
+        let current = app.descendants(matching: .any)["account.current"]
+        XCTAssertTrue(current.waitForExistence(timeout: 10))
+        current.tap()
+
+        let title = app.staticTexts["accountDetail.title"]
+        XCTAssertTrue(title.waitForExistence(timeout: 5))
+        XCTAssertEqual(title.label, "Běžný účet")
+        attachScreenshot(named: "account-detail")
+
+        // The newest transaction of the demo current account: Petr Svoboda returns a loan.
+        let row = app.descendants(matching: .any)
+            .matching(NSPredicate(format: "label CONTAINS %@", "Petr Svoboda"))
+            .firstMatch
+        XCTAssertTrue(row.waitForExistence(timeout: 5))
+        row.tap()
+
+        XCTAssertTrue(app.staticTexts["transactionDetail.counterparty"].waitForExistence(timeout: 5))
+        XCTAssertEqual(app.staticTexts["transactionDetail.counterparty"].label, "Petr Svoboda")
+        attachScreenshot(named: "transaction-detail")
+    }
+
+    func testTransactionsQuickActionOpensFilteredHistory() {
+        let app = launchApp(signedIn: true)
+
+        waitAndTap(app.buttons["dashboard.action.transactions"])
+        let filter = app.segmentedControls["transactions.filter"]
+        XCTAssertTrue(filter.waitForExistence(timeout: 5))
+
+        // Petr Svoboda sent money today, so he is at the top of the history.
+        let petr = app.descendants(matching: .any)
+            .matching(NSPredicate(format: "label CONTAINS %@", "Petr Svoboda")).firstMatch
+        XCTAssertTrue(petr.waitForExistence(timeout: 5))
+
+        filter.buttons["Odchozí"].tap()
+        XCTAssertFalse(petr.waitForExistence(timeout: 2), "An incoming payment must be hidden by the outgoing filter")
+
+        filter.buttons["Příchozí"].tap()
+        XCTAssertTrue(petr.waitForExistence(timeout: 5))
+        attachScreenshot(named: "transactions-incoming")
+    }
+
+    func testSendMoneyQuickActionOpensPaymentsTab() {
+        let app = launchApp(signedIn: true)
+
+        waitAndTap(app.buttons["dashboard.action.send"])
+        let title = app.descendants(matching: .any)
+            .matching(NSPredicate(format: "label CONTAINS %@", "Platby zatím nejsou k dispozici"))
+            .firstMatch
+        XCTAssertTrue(title.waitForExistence(timeout: 5))
+    }
+
     func testCzechTabsShowTheirEmptyStates() {
         let app = launchApp(signedIn: true)
 
