@@ -20,6 +20,8 @@ final class AppDependencies {
     /// Demo quotes until a real provider is chosen; the watchlist is stored locally.
     let stocks: any StockService
     let watchlist: any WatchlistService
+    /// The user's own Finnhub API key (Keychain). Without it, stocks are demo data.
+    let stockAPIKey: StockAPIKeyStore
     /// Creates the built-in test profiles (only in the real app, not in UI tests or previews).
     @ObservationIgnored var prepareTestAccounts: (@MainActor () async -> Void)?
 
@@ -29,6 +31,7 @@ final class AppDependencies {
         biometrics: any BiometricService,
         biometricSettings: BiometricSettings,
         watchlist: any WatchlistService,
+        stockAPIKey: StockAPIKeyStore,
         stocks: (any StockService)? = nil,
         news: (any NewsService)? = nil
     ) {
@@ -37,7 +40,8 @@ final class AppDependencies {
         self.biometrics = biometrics
         self.biometricSettings = biometricSettings
         self.news = news ?? RSSNewsService()
-        self.stocks = stocks ?? DemoStockService()
+        self.stockAPIKey = stockAPIKey
+        self.stocks = stocks ?? SwitchingStockService(keyStore: stockAPIKey)
         self.watchlist = watchlist
         session = SessionStore(auth: auth, biometricSettings: biometricSettings)
     }
@@ -56,14 +60,16 @@ final class AppDependencies {
 
         // One database for all services, so they see the same users and accounts.
         let container = makeContainer(inMemory: false)
-        let auth = LocalAuthService(container: container, keychain: SystemKeychainService())
+        let keychain = SystemKeychainService()
+        let auth = LocalAuthService(container: container, keychain: keychain)
         let banking = LocalBankingService(container: container)
         let dependencies = AppDependencies(
             auth: auth,
             banking: banking,
             biometrics: LocalBiometricService(),
             biometricSettings: BiometricSettings(),
-            watchlist: LocalWatchlistService(container: container)
+            watchlist: LocalWatchlistService(container: container),
+            stockAPIKey: StockAPIKeyStore(keychain: keychain)
         )
         dependencies.prepareTestAccounts = {
             await TestAccounts.prepare(auth: auth, banking: banking)
@@ -84,7 +90,8 @@ final class AppDependencies {
             banking: LocalBankingService(container: container),
             biometrics: LocalBiometricService(),
             biometricSettings: BiometricSettings(),
-            watchlist: LocalWatchlistService(container: container)
+            watchlist: LocalWatchlistService(container: container),
+            stockAPIKey: StockAPIKeyStore(keychain: keychain)
         )
     }
 

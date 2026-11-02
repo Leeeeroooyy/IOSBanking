@@ -38,12 +38,10 @@ struct StocksContent: View {
                     }
                 }
 
-                if model.isDemo {
-                    Text("stocks.demoNote")
-                        .font(.footnote)
-                        .foregroundStyle(Theme.Colors.textSecondary)
-                        .padding(.top, Theme.Spacing.m)
-                }
+                Text(model.isDemo ? LocalizedStringKey("stocks.demoNote.list") : LocalizedStringKey("stocks.source.finnhub"))
+                    .font(.footnote)
+                    .foregroundStyle(Theme.Colors.textSecondary)
+                    .padding(.top, Theme.Spacing.m)
             }
             .alert("stocks.watchlist.error", isPresented: Binding(
                 get: { model.watchlistFailed },

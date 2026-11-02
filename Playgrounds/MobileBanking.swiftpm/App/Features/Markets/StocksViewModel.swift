@@ -20,10 +20,14 @@ final class StocksViewModel {
         self.watchlistService = watchlistService
     }
 
-    var isDemo: Bool { service.isDemo }
+    /// Whether the shown quotes are demo data (remembered at load time).
+    private(set) var isDemo = true
+    private(set) var hasHistory = true
 
     func load() async {
         loadWatchlist()
+        isDemo = service.isDemo
+        hasHistory = service.hasHistory
         do {
             state = .loaded(try await service.quotes())
         } catch {
@@ -31,8 +35,10 @@ final class StocksViewModel {
         }
     }
 
+    /// Loads the first time, and again when the data source changed (API key added or removed).
     func loadIfNeeded() async {
-        if case .loaded = state { return }
+        if case .loaded = state, isDemo == service.isDemo { return }
+        state = .loading
         await load()
     }
 

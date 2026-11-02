@@ -18,7 +18,7 @@ struct MarketsView: View {
                         .foregroundStyle(Theme.Colors.onBrand)
                         .accessibilityAddTraits(.isHeader)
                         .accessibilityIdentifier("markets.title")
-                    Text("stocks.subtitle")
+                    Text(stocks.isDemo ? LocalizedStringKey("stocks.subtitle") : LocalizedStringKey("stocks.subtitle.live"))
                         .font(.subheadline)
                         .foregroundStyle(Theme.Colors.onBrandSecondary)
                 }

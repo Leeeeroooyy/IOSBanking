@@ -1117,6 +1117,24 @@
         }
       }
     },
+    "error.rateLimit.message": {
+      "comment": "HTTP 429",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Příliš mnoho požadavků. Zkuste to prosím za minutu znovu."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Too many requests. Please try again in a minute."
+          }
+        }
+      }
+    },
     "error.server.message": {
       "comment": "Network error: server or unreadable answer",
       "extractionState": "manual",
@@ -1149,6 +1167,24 @@
           "stringUnit": {
             "state": "translated",
             "value": "The server did not respond in time. Please try again."
+          }
+        }
+      }
+    },
+    "error.unauthorized.message": {
+      "comment": "HTTP 401/403",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zdroj dat odmítl přístup. Zkontrolujte API klíč v Nastavení."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The data source refused access. Check the API key in Settings."
           }
         }
       }
@@ -1873,6 +1909,150 @@
         }
       }
     },
+    "settings.stocks": {
+      "comment": "Settings section",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ceny akcií (Finnhub)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stock prices (Finnhub)"
+          }
+        }
+      }
+    },
+    "settings.stocks.error": {
+      "comment": "Footer error",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Klíč se nepodařilo uložit ani odebrat. Zkuste to prosím znovu."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The key could not be saved or removed. Please try again."
+          }
+        }
+      }
+    },
+    "settings.stocks.hint": {
+      "comment": "Footer",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bez klíče aplikace ukazuje ukázková data. Klíč je zdarma, uloží se jen do Klíčenky tohoto zařízení."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Without a key the app shows demo data. The key is free and is stored only in this device's Keychain."
+          }
+        }
+      }
+    },
+    "settings.stocks.key": {
+      "comment": "Secure field placeholder",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "API klíč"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "API key"
+          }
+        }
+      }
+    },
+    "settings.stocks.register": {
+      "comment": "Link",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Získat bezplatný klíč na finnhub.io"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Get a free key at finnhub.io"
+          }
+        }
+      }
+    },
+    "settings.stocks.remove": {
+      "comment": "Button",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odebrat klíč"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove key"
+          }
+        }
+      }
+    },
+    "settings.stocks.save": {
+      "comment": "Button",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uložit klíč"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save key"
+          }
+        }
+      }
+    },
+    "settings.stocks.saved": {
+      "comment": "Status",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Klíč je uložen – zobrazují se reálné ceny"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Key saved – real prices are shown"
+          }
+        }
+      }
+    },
     "settings.title": {
       "comment": "Settings screen title",
       "extractionState": "manual",
@@ -1981,6 +2161,24 @@
         }
       }
     },
+    "stocks.chart.unavailable": {
+      "comment": "Instead of the chart with live data",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Historie cen není v bezplatném tarifu Finnhub dostupná, proto se graf nezobrazuje."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Price history is not part of the free Finnhub plan, so no chart is shown."
+          }
+        }
+      }
+    },
     "stocks.demoNote": {
       "comment": "Note that stock data is demo",
       "extractionState": "manual",
@@ -1995,6 +2193,24 @@
           "stringUnit": {
             "state": "translated",
             "value": "Stock prices are demo data of a study app, not real market prices. Connecting a real quote provider is prepared."
+          }
+        }
+      }
+    },
+    "stocks.demoNote.list": {
+      "comment": "Demo note under the stock list",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ceny akcií jsou ukázková data školní aplikace, nejde o skutečné tržní kurzy. Pro reálné ceny zadejte svůj Finnhub API klíč v Nastavení."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stock prices are demo data of a study app, not real market prices. For real prices, enter your Finnhub API key in Settings."
           }
         }
       }
@@ -2143,6 +2359,24 @@
         }
       }
     },
+    "stocks.source.finnhub": {
+      "comment": "Source of live quotes",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Data: Finnhub.io (bezplatný tarif). Ceny jsou informativní, mohou být zpožděné a aplikace s nimi neobchoduje."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Data: Finnhub.io (free plan). Prices are for information only, may be delayed, and the app does not trade."
+          }
+        }
+      }
+    },
     "stocks.subtitle": {
       "comment": "Stocks header subtitle",
       "extractionState": "manual",
@@ -2157,6 +2391,24 @@
           "stringUnit": {
             "state": "translated",
             "value": "Follow selected stocks"
+          }
+        }
+      }
+    },
+    "stocks.subtitle.live": {
+      "comment": "Stocks header subtitle with live data",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aktuální ceny amerických akcií"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Current prices of US stocks"
           }
         }
       }

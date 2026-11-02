@@ -7,9 +7,11 @@ struct SettingsView: View {
     @Environment(\.locale) private var locale
 
     @State private var viewModel: SettingsViewModel
+    private let stockAPIKey: StockAPIKeyStore
 
     @MainActor
-    init(biometrics: any BiometricService, settings: BiometricSettings) {
+    init(biometrics: any BiometricService, settings: BiometricSettings, stockAPIKey: StockAPIKeyStore) {
+        self.stockAPIKey = stockAPIKey
         _viewModel = State(initialValue: SettingsViewModel(biometrics: biometrics, settings: settings))
     }
 
@@ -56,6 +58,8 @@ struct SettingsView: View {
                     Text("biometric.error.unavailable")
                 }
             }
+
+            StockAPIKeySection(keyStore: stockAPIKey)
         }
         .navigationTitle("settings.title")
     }
@@ -64,6 +68,6 @@ struct SettingsView: View {
 #Preview {
     let dependencies = AppDependencies.inMemory()
     return NavigationStack {
-        SettingsView(biometrics: dependencies.biometrics, settings: dependencies.biometricSettings)
+        SettingsView(biometrics: dependencies.biometrics, settings: dependencies.biometricSettings, stockAPIKey: dependencies.stockAPIKey)
     }
 }

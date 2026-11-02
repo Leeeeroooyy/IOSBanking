@@ -13,6 +13,8 @@ extension NetworkError {
         switch self {
         case .offline: return "error.offline.message"
         case .timeout: return "error.timeout.message"
+        case .server(let status) where status == 401 || status == 403: return "error.unauthorized.message"
+        case .server(let status) where status == 429: return "error.rateLimit.message"
         case .server, .invalidResponse: return "error.server.message"
         }
     }

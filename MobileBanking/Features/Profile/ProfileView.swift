@@ -35,7 +35,7 @@ struct ProfileView: View {
                 .accessibilityIdentifier("profile.data")
 
                 NavigationLink {
-                    SettingsView(biometrics: dependencies.biometrics, settings: dependencies.biometricSettings)
+                    SettingsView(biometrics: dependencies.biometrics, settings: dependencies.biometricSettings, stockAPIKey: dependencies.stockAPIKey)
                 } label: {
                     Label("settings.title", systemImage: "gearshape")
                 }

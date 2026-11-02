@@ -29,25 +29,34 @@ struct StockDetailView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: Theme.Spacing.l) {
                 header
-                Picker("stocks.period", selection: $period) {
-                    ForEach(Period.allCases) { period in
-                        Text(period.titleKey).tag(period)
-                    }
-                }
-                .pickerStyle(.segmented)
 
-                chart
-                    .frame(height: 220)
+                if model.hasHistory {
+                    Picker("stocks.period", selection: $period) {
+                        ForEach(Period.allCases) { period in
+                            Text(period.titleKey).tag(period)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+
+                    chart
+                        .frame(height: 220)
+                } else {
+                    // The free Finnhub plan has no price history: say so instead of drawing invented data.
+                    Label("stocks.chart.unavailable", systemImage: "chart.xyaxis.line")
+                        .font(.footnote)
+                        .foregroundStyle(Theme.Colors.textSecondary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(Theme.Spacing.m)
+                        .background(Theme.Colors.surfaceRaised, in: RoundedRectangle(cornerRadius: Theme.Radius.m, style: .continuous))
+                }
 
                 details
 
                 watchButton
 
-                if model.isDemo {
-                    Text("stocks.demoNote")
-                        .font(.footnote)
-                        .foregroundStyle(Theme.Colors.textSecondary)
-                }
+                Text(model.isDemo ? LocalizedStringKey("stocks.demoNote") : LocalizedStringKey("stocks.source.finnhub"))
+                    .font(.footnote)
+                    .foregroundStyle(Theme.Colors.textSecondary)
             }
             .padding(Theme.Spacing.xl)
         }
@@ -176,6 +185,7 @@ struct StockDetailView: View {
     }
 
     private func loadHistory() async {
+        guard model.hasHistory else { return }
         history = .loading
         do {
             history = .loaded(try await model.service.history(symbol: quote.symbol, days: period.rawValue))

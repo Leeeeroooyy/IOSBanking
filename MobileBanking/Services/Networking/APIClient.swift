@@ -18,9 +18,13 @@ struct APIClient {
     var timeout: TimeInterval = 15
 
     /// Downloads the body of a GET request.
-    func data(from url: URL) async throws -> Data {
+    /// - Parameter headers: e.g. an API key. Keys go in headers, not in the URL, so they do not end up in logs.
+    func data(from url: URL, headers: [String: String] = [:]) async throws -> Data {
         var request = URLRequest(url: url, timeoutInterval: timeout)
         request.setValue("MobileBanking-StudyApp/1.0 (iOS)", forHTTPHeaderField: "User-Agent")
+        for (name, value) in headers {
+            request.setValue(value, forHTTPHeaderField: name)
+        }
 
         let data: Data
         let response: URLResponse
@@ -43,8 +47,13 @@ struct APIClient {
     }
 
     /// Downloads and decodes JSON with `Codable` (ready for future JSON APIs).
-    func decode<T: Decodable>(_ type: T.Type, from url: URL, decoder: JSONDecoder = JSONDecoder()) async throws -> T {
-        let body = try await data(from: url)
+    func decode<T: Decodable>(
+        _ type: T.Type,
+        from url: URL,
+        headers: [String: String] = [:],
+        decoder: JSONDecoder = JSONDecoder()
+    ) async throws -> T {
+        let body = try await data(from: url, headers: headers)
         do {
             return try decoder.decode(T.self, from: body)
         } catch {

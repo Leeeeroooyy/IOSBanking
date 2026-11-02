@@ -26,12 +26,14 @@ struct PricePoint: Identifiable, Hashable {
     var id: Date { date }
 }
 
-/// Source of stock quotes. Today `DemoStockService`; a real provider (with an API key kept
-/// outside the source code) can replace it without touching the screens.
+/// Source of stock quotes: `DemoStockService`, or `FinnhubStockService` when the user saved an API key.
+/// The screens only see this protocol.
 @MainActor
 protocol StockService {
     /// `true` while the quotes are demo data; the screens then show the DEMO badge.
     var isDemo: Bool { get }
+    /// `false` when the source offers no price history (the chart is then not shown).
+    var hasHistory: Bool { get }
     func quotes() async throws -> [StockQuote]
     func history(symbol: String, days: Int) async throws -> [PricePoint]
 }
@@ -42,6 +44,7 @@ protocol StockService {
 @MainActor
 final class DemoStockService: StockService {
     let isDemo = true
+    let hasHistory = true
 
     private struct Company {
         let symbol: String
