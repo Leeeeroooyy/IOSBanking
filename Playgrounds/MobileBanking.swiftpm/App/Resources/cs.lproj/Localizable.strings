@@ -72,6 +72,10 @@
 "login.noAccount" = "Jste tu poprvé?";
 "login.submit" = "Přihlásit se";
 "login.testProfiles" = "Testovací profily";
+"login.testProfiles.faceIDReason %@" = "Přihlášení jako %@";
+"login.testProfiles.hint.faceID" = "Přihlásí po ověření Face ID";
+"login.testProfiles.hint.fill" = "Vyplní přihlašovací údaje";
+"login.testProfiles.noBiometrics" = "Face ID ani Touch ID nejsou k dispozici. Údaje jsou vyplněné – přihlaste se tlačítkem Přihlásit se.";
 "login.testProfiles.password %@" = "Heslo pro oba profily: %@";
 "login.title" = "Přihlášení";
 "news.attribution.csu" = "Zdroj: Český statistický úřad (ČSÚ). Data jsou zveřejněna pod licencí CC BY 4.0, aplikace je zobrazuje beze změny obsahu.";

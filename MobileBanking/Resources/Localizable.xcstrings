@@ -1315,6 +1315,78 @@
         }
       }
     },
+    "login.testProfiles.faceIDReason %@": {
+      "comment": "Text in the system Face ID prompt when choosing a test profile",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Přihlášení jako %@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign in as %@"
+          }
+        }
+      }
+    },
+    "login.testProfiles.hint.faceID": {
+      "comment": "VoiceOver hint",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Přihlásí po ověření Face ID"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Signs in after Face ID"
+          }
+        }
+      }
+    },
+    "login.testProfiles.hint.fill": {
+      "comment": "VoiceOver hint",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vyplní přihlašovací údaje"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fills in the sign-in details"
+          }
+        }
+      }
+    },
+    "login.testProfiles.noBiometrics": {
+      "comment": "Under test profiles when biometrics are missing",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Face ID ani Touch ID nejsou k dispozici. Údaje jsou vyplněné – přihlaste se tlačítkem Přihlásit se."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Face ID and Touch ID are not available. The details are filled in – sign in with the Sign in button."
+          }
+        }
+      }
+    },
     "login.testProfiles.password %@": {
       "comment": "Shows the shared test password",
       "extractionState": "manual",

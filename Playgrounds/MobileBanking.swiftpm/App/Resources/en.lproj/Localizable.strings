@@ -72,6 +72,10 @@
 "login.noAccount" = "New here?";
 "login.submit" = "Sign in";
 "login.testProfiles" = "Test profiles";
+"login.testProfiles.faceIDReason %@" = "Sign in as %@";
+"login.testProfiles.hint.faceID" = "Signs in after Face ID";
+"login.testProfiles.hint.fill" = "Fills in the sign-in details";
+"login.testProfiles.noBiometrics" = "Face ID and Touch ID are not available. The details are filled in – sign in with the Sign in button.";
 "login.testProfiles.password %@" = "Password for both profiles: %@";
 "login.title" = "Sign in";
 "news.attribution.csu" = "Source: Czech Statistical Office (CZSO). The data are published under the CC BY 4.0 licence; the app shows them without changing their content.";

@@ -9,11 +9,16 @@ struct LoginView: View {
 
     @State private var viewModel: LoginViewModel
     @FocusState private var focus: Field?
+    /// Message under the test profiles (Face ID failed or not available).
+    @State private var profileMessage: LocalizedStringKey?
+    @Environment(\.locale) private var locale
+    private let biometrics: any BiometricService
     private let onRegister: () -> Void
 
     @MainActor
-    init(auth: any AuthService, session: SessionStore, onRegister: @escaping () -> Void) {
+    init(auth: any AuthService, session: SessionStore, biometrics: any BiometricService, onRegister: @escaping () -> Void) {
         _viewModel = State(initialValue: LoginViewModel(auth: auth, session: session))
+        self.biometrics = biometrics
         self.onRegister = onRegister
     }
 
@@ -76,12 +81,10 @@ struct LoginView: View {
                 .foregroundStyle(Theme.Colors.textSecondary)
             ForEach(TestAccounts.profiles, id: \.email) { profile in
                 Button {
-                    viewModel.email = profile.email
-                    viewModel.password = TestAccounts.password
-                    submit()
+                    Task { await signIn(as: profile) }
                 } label: {
                     HStack(spacing: Theme.Spacing.m) {
-                        Image(systemName: "person.crop.circle")
+                        Image(systemName: biometrics.isAvailable ? "faceid" : "person.crop.circle")
                             .font(.title3)
                             .foregroundStyle(Theme.Colors.primary)
                             .accessibilityHidden(true)
@@ -105,6 +108,13 @@ struct LoginView: View {
                 }
                 .buttonStyle(.plain)
                 .disabled(viewModel.isSubmitting)
+                .accessibilityHint(Text(biometrics.isAvailable ? "login.testProfiles.hint.faceID" : "login.testProfiles.hint.fill"))
+            }
+            if let profileMessage {
+                Text(profileMessage)
+                    .font(.footnote)
+                    .foregroundStyle(Theme.Colors.negative)
+                    .accessibilityIdentifier("login.testProfiles.message")
             }
             Text("login.testProfiles.password \(TestAccounts.password)")
                 .font(.footnote)
@@ -117,9 +127,34 @@ struct LoginView: View {
         focus = nil
         Task { await viewModel.submit() }
     }
+
+    /// A test profile signs in only after Face ID (or Touch ID) confirms the device owner.
+    /// Without biometrics the sign-in details are only filled in, and the user confirms with "Přihlásit".
+    private func signIn(as profile: TestAccounts.Profile) async {
+        focus = nil
+        profileMessage = nil
+        viewModel.email = profile.email
+        viewModel.password = TestAccounts.password
+
+        guard biometrics.isAvailable else {
+            profileMessage = "login.testProfiles.noBiometrics"
+            return
+        }
+        do {
+            try await biometrics.authenticate(
+                reason: .localized("login.testProfiles.faceIDReason \(profile.fullName)", locale: locale)
+            )
+            await viewModel.submit()
+        } catch let error as BiometricError {
+            // Cancelled: the details stay filled in, nothing else happens.
+            profileMessage = error.messageKey
+        } catch {
+            profileMessage = BiometricError.failed.messageKey
+        }
+    }
 }
 
 #Preview {
     let dependencies = AppDependencies.inMemory()
-    return LoginView(auth: dependencies.auth, session: dependencies.session) {}
+    return LoginView(auth: dependencies.auth, session: dependencies.session, biometrics: dependencies.biometrics) {}
 }

@@ -13,7 +13,7 @@ struct AuthFlowView: View {
     var body: some View {
         switch screen {
         case .login:
-            LoginView(auth: dependencies.auth, session: dependencies.session) {
+            LoginView(auth: dependencies.auth, session: dependencies.session, biometrics: dependencies.biometrics) {
                 screen = .register
             }
         case .register:
