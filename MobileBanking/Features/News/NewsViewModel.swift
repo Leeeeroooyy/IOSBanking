@@ -46,6 +46,15 @@ final class NewsViewModel {
 }
 
 extension NewsCategory {
+    var systemImage: String {
+        switch self {
+        case .all: return "newspaper.fill"
+        case .statistics: return "chart.bar.fill"
+        case .pressReleases: return "megaphone.fill"
+        case .ecb: return "eurosign.circle.fill"
+        }
+    }
+
     var titleKey: LocalizedStringKey {
         switch self {
         case .all: return "news.category.all"

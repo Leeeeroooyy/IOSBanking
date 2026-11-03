@@ -27,7 +27,7 @@ struct TransactionDetailView: View {
                 .font(.title2.weight(.bold))
                 .foregroundStyle(Theme.Colors.onBrand)
                 .frame(width: 64, height: 64)
-                .background(BrandGradient().clipShape(Circle()))
+                .background(BrandGradient(decorated: false).clipShape(Circle()))
                 .accessibilityHidden(true)
 
             Group {

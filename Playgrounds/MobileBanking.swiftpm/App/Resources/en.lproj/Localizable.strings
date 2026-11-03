@@ -32,6 +32,8 @@
 "auth.tagline" = "Demo bank for the Mobile Technologies course";
 "biometric.error.failed" = "Verification failed. Please try again.";
 "biometric.error.unavailable" = "Face ID is not available on this device.";
+"card.accessibility %@" = "Payment card for the current account, ending in %@";
+"card.debit" = "DEBIT";
 "category.groceries" = "Groceries";
 "category.interest" = "Interest";
 "category.opening" = "Opening deposit";
@@ -56,8 +58,6 @@
 "dashboard.welcome" = "Welcome back";
 "date.today" = "Today";
 "date.yesterday" = "Yesterday";
-"demo.badge" = "DEMO";
-"demo.badge.accessibility" = "Demo data, not a real bank";
 "error.generic.message" = "The data could not be loaded. Please try again.";
 "error.generic.title" = "Something went wrong";
 "error.offline.message" = "You are not connected to the internet. Check your connection and try again.";

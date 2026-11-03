@@ -32,6 +32,8 @@
 "auth.tagline" = "Demo banka pro předmět Mobilní technologie";
 "biometric.error.failed" = "Ověření se nezdařilo. Zkuste to prosím znovu.";
 "biometric.error.unavailable" = "Face ID není na tomto zařízení k dispozici.";
+"card.accessibility %@" = "Platební karta k běžnému účtu, končí číslicemi %@";
+"card.debit" = "DEBIT";
 "category.groceries" = "Nákup";
 "category.interest" = "Úroky";
 "category.opening" = "Počáteční vklad";
@@ -56,8 +58,6 @@
 "dashboard.welcome" = "Vítej zpět";
 "date.today" = "Dnes";
 "date.yesterday" = "Včera";
-"demo.badge" = "DEMO";
-"demo.badge.accessibility" = "Ukázková data, nejde o skutečnou banku";
 "error.generic.message" = "Data se nepodařilo načíst. Zkuste to prosím znovu.";
 "error.generic.title" = "Něco se pokazilo";
 "error.offline.message" = "Nejste připojeni k internetu. Zkontrolujte připojení a zkuste to znovu.";

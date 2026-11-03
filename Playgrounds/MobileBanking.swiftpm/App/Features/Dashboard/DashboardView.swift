@@ -53,7 +53,7 @@ struct DashboardView: View {
                 }
 
                 Spacer()
-                DemoBadge()
+                BrandLogo(size: 36)
             }
 
             VStack(alignment: .leading, spacing: Theme.Spacing.xs) {
@@ -107,6 +107,9 @@ struct DashboardView: View {
             ErrorStateView { model.load() }
         case .loaded:
             VStack(alignment: .leading, spacing: Theme.Spacing.xl) {
+                if let card = model.accounts.first(where: { $0.kind == .current }) {
+                    BankCardView(account: card)
+                }
                 accounts
                 recentTransactions
             }
@@ -137,9 +140,18 @@ struct DashboardView: View {
             }
 
             if model.recentTransactions.isEmpty {
-                Text("dashboard.empty")
-                    .font(.subheadline)
-                    .foregroundStyle(Theme.Colors.textSecondary)
+                HStack(spacing: Theme.Spacing.m) {
+                    Image(systemName: "tray")
+                        .font(.title2)
+                        .foregroundStyle(Theme.Colors.primary)
+                        .frame(width: 48, height: 48)
+                        .background(Theme.Colors.primary.opacity(0.1), in: Circle())
+                        .accessibilityHidden(true)
+                    Text("dashboard.empty")
+                        .font(.subheadline)
+                        .foregroundStyle(Theme.Colors.textSecondary)
+                }
+                .padding(.vertical, Theme.Spacing.s)
             } else {
                 ForEach(model.recentTransactions) { transaction in
                     NavigationLink(value: transaction) {

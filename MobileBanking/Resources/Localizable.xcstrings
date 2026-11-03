@@ -595,6 +595,42 @@
         }
       }
     },
+    "card.accessibility %@": {
+      "comment": "VoiceOver label of the drawn card",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Platební karta k běžnému účtu, končí číslicemi %@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Payment card for the current account, ending in %@"
+          }
+        }
+      }
+    },
+    "card.debit": {
+      "comment": "Label on the drawn payment card",
+      "extractionState": "manual",
+      "localizations": {
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DEBIT"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DEBIT"
+          }
+        }
+      }
+    },
     "category.groceries": {
       "comment": "Transaction category",
       "extractionState": "manual",
@@ -1023,42 +1059,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Yesterday"
-          }
-        }
-      }
-    },
-    "demo.badge": {
-      "comment": "Badge marking demo data",
-      "extractionState": "manual",
-      "localizations": {
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "DEMO"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "DEMO"
-          }
-        }
-      }
-    },
-    "demo.badge.accessibility": {
-      "comment": "VoiceOver label of the DEMO badge",
-      "extractionState": "manual",
-      "localizations": {
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ukázková data, nejde o skutečnou banku"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Demo data, not a real bank"
           }
         }
       }

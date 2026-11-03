@@ -74,7 +74,7 @@ struct StockDetailView: View {
                     .foregroundStyle(Theme.Colors.textPrimary)
                     .accessibilityIdentifier("stocks.detail.name")
                 Spacer()
-                if model.isDemo { DemoBadge() }
+                StockChangeIcon(ratio: quote.changeRatio)
             }
             Text(verbatim: "\(quote.symbol) · \(quote.exchange)")
                 .font(.subheadline)

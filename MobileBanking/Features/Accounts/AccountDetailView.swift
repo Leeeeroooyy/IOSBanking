@@ -52,7 +52,12 @@ struct AccountDetailView: View {
                     .accessibilityAddTraits(.isHeader)
                     .accessibilityIdentifier("accountDetail.title")
                 Spacer()
-                DemoBadge()
+                Image(systemName: account.kind.systemImage)
+                    .font(.title2.weight(.semibold))
+                    .foregroundStyle(Theme.Colors.onBrand)
+                    .frame(width: 48, height: 48)
+                    .background(Theme.Colors.onBrand.opacity(0.14), in: RoundedRectangle(cornerRadius: Theme.Radius.s, style: .continuous))
+                    .accessibilityHidden(true)
             }
 
             VStack(alignment: .leading, spacing: Theme.Spacing.xs) {

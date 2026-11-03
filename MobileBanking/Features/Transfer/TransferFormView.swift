@@ -24,7 +24,7 @@ struct TransferFormView: View {
                         .foregroundStyle(Theme.Colors.onBrandSecondary)
                 }
                 Spacer()
-                DemoBadge()
+                HeaderIcon(systemImage: "paperplane.fill")
             }
         } content: {
             if model.loadFailed {

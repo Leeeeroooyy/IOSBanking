@@ -17,7 +17,7 @@ struct LockView: View {
                     .font(Theme.Typography.sectionTitle)
                     .foregroundStyle(Theme.Colors.onBrand)
                 Spacer()
-                DemoBadge()
+                BrandLogo(size: 36)
             }
 
             Spacer()

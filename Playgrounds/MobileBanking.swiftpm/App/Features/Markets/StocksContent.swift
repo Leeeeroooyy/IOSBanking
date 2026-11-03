@@ -81,7 +81,7 @@ struct StockRow: View {
                 .minimumScaleFactor(0.6)
                 .foregroundStyle(Theme.Colors.onBrand)
                 .frame(width: 48, height: 44)
-                .background(BrandGradient().clipShape(RoundedRectangle(cornerRadius: Theme.Radius.s, style: .continuous)))
+                .background(BrandGradient(decorated: false).clipShape(RoundedRectangle(cornerRadius: Theme.Radius.s, style: .continuous)))
 
             VStack(alignment: .leading, spacing: 2) {
                 HStack(spacing: Theme.Spacing.xs) {
@@ -130,5 +130,20 @@ struct StockChangeText: View {
         .font(font)
         .monospacedDigit()
         .foregroundStyle(ratio >= 0 ? Theme.Colors.positive : Theme.Colors.negative)
+    }
+}
+
+/// A round arrow in green or red, next to the price on the stock detail.
+struct StockChangeIcon: View {
+    let ratio: Double
+
+    var body: some View {
+        let rising = ratio >= 0
+        Image(systemName: rising ? "arrow.up.right" : "arrow.down.right")
+            .font(.headline.weight(.bold))
+            .foregroundStyle(.white)
+            .frame(width: 44, height: 44)
+            .background(rising ? Theme.Colors.positive : Theme.Colors.negative, in: Circle())
+            .accessibilityHidden(true)
     }
 }

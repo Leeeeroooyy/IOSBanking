@@ -23,9 +23,7 @@ struct MarketsView: View {
                         .foregroundStyle(Theme.Colors.onBrandSecondary)
                 }
                 Spacer()
-                if stocks.isDemo {
-                    DemoBadge()
-                }
+                HeaderIcon(systemImage: "chart.line.uptrend.xyaxis")
             }
         } content: {
             StocksContent(model: stocks)

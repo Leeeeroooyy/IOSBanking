@@ -25,6 +25,8 @@ struct NewsListView: View {
                     .font(.subheadline)
                     .foregroundStyle(Theme.Colors.onBrandSecondary)
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .overlay(alignment: .topTrailing) { HeaderIcon(systemImage: "newspaper.fill") }
         } content: {
             VStack(alignment: .leading, spacing: Theme.Spacing.l) {
                 categoryPicker
@@ -47,7 +49,7 @@ struct NewsListView: View {
                     Button {
                         Task { await model.select(category, languageCode: languageCode) }
                     } label: {
-                        Text(category.titleKey)
+                        Label(category.titleKey, systemImage: category.systemImage)
                             .font(.subheadline.weight(.semibold))
                             .foregroundStyle(isSelected ? Theme.Colors.onBrand : Theme.Colors.textPrimary)
                             .padding(.horizontal, Theme.Spacing.m)
@@ -94,6 +96,24 @@ struct NewsRow: View {
     let article: NewsArticle
 
     var body: some View {
+        HStack(alignment: .top, spacing: Theme.Spacing.m) {
+            Image(systemName: article.category.systemImage)
+                .font(.body.weight(.semibold))
+                .foregroundStyle(Theme.Colors.onBrand)
+                .frame(width: 40, height: 40)
+                .background(BrandGradient(decorated: false).clipShape(RoundedRectangle(cornerRadius: Theme.Radius.s, style: .continuous)))
+                .accessibilityHidden(true)
+            texts
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(Theme.Spacing.l)
+        .background(Theme.Colors.surfaceRaised, in: RoundedRectangle(cornerRadius: Theme.Radius.m, style: .continuous))
+        .overlay(RoundedRectangle(cornerRadius: Theme.Radius.m, style: .continuous).stroke(Theme.Colors.border))
+        .contentShape(Rectangle())
+        .accessibilityElement(children: .combine)
+    }
+
+    private var texts: some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.s) {
             NewsMetaLine(article: article)
             Text(verbatim: article.title)
@@ -109,11 +129,6 @@ struct NewsRow: View {
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(Theme.Spacing.l)
-        .background(Theme.Colors.surfaceRaised, in: RoundedRectangle(cornerRadius: Theme.Radius.m, style: .continuous))
-        .overlay(RoundedRectangle(cornerRadius: Theme.Radius.m, style: .continuous).stroke(Theme.Colors.border))
-        .contentShape(Rectangle())
-        .accessibilityElement(children: .combine)
     }
 }
 

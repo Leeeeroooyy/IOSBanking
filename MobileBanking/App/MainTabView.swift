@@ -58,6 +58,8 @@ struct MainTabView: View {
             .tabItem { Label("tab.profile", systemImage: "person") }
             .tag(MainTab.profile)
         }
+        // iPad: the same bottom tab bar with icons as on iPhone, instead of the text-only bar at the top.
+        .environment(\.horizontalSizeClass, .compact)
     }
 }
 

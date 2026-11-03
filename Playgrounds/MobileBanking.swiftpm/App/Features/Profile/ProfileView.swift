@@ -57,11 +57,6 @@ struct ProfileView: View {
             }
         }
         .navigationTitle("tab.profile")
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                DemoBadge()
-            }
-        }
     }
 }
 
